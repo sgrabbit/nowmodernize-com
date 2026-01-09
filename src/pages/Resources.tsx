@@ -242,7 +242,7 @@ function ResourceCard({ resource, index }: { resource: typeof resources[0]; inde
             <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
             <div>
               <p className="font-semibold text-foreground text-sm">Download ready!</p>
-              <p className="text-muted-foreground text-sm">We've also emailed it to you.</p>
+              {/* <p className="text-muted-foreground text-sm">We've also emailed it to you.</p> */}
             </div>
           </div>
         )}

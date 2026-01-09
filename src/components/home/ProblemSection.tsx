@@ -71,7 +71,7 @@ export function ProblemSection() {
         >
           <p className="text-lg md:text-xl font-heading font-semibold text-foreground">
             Modernization is the first step to unlock the real power of ServiceNow 
-            <span className="gradient-text">and become AI-ready.</span>
+            <span className="gradient-text"> and become AI-ready.</span>
           </p>
           <p className="text-sm text-muted-foreground mt-3">
             If "we're scared to touch it" sounds familiar, you're not alone.
