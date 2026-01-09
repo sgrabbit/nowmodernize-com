@@ -27,7 +27,7 @@ const resources = [
     url:"https://xennh3a2cyfqv68j.public.blob.vercel-storage.com/NowModernize-AI-Ready-ServiceNow-Leaders.pdf",
   },
   {
-    active: true,
+    active: false,
     title: "ServiceNow Modernization Scorecard (Sample)",
     oneLiner: "See the exact format we use to assess an instance for modernization + AI readiness.",
     whatYouGet: [
@@ -45,7 +45,7 @@ const resources = [
     url:"https://xennh3a2cyfqv68j.public.blob.vercel-storage.com/NowModernize-AI-Ready-ServiceNow-Leaders.pdf",
   },
   {
-    active: true,
+    active: false,
     title: "30/60/90 Modernization Roadmap (Sample)",
     oneLiner: "A staged plan to stabilize now and modernize foundations for AI readiness next.",
     whatYouGet: [
