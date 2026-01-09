@@ -35,7 +35,7 @@ export function ProblemSection() {
             <span className="gradient-text">it drifts into a blocker.</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
-            In mid-tier SaaS, ServiceNow usually starts strong. Then fast fixes, custom scripts, and messy data pile up—until every change increases incident risk.
+            In mid-tier SaaS, ServiceNow usually starts strong. Then fast fixes, custom scripts, and messy data pile up, making every change more risky until every change increases incident risk.
           </p>
         </motion.div>
 
@@ -70,7 +70,7 @@ export function ProblemSection() {
           className="mt-12 text-center"
         >
           <p className="text-lg md:text-xl font-heading font-semibold text-foreground">
-            Modernization is the first step to unlock the real power of ServiceNow—
+            Modernization is the first step to unlock the real power of ServiceNow 
             <span className="gradient-text">and become AI-ready.</span>
           </p>
           <p className="text-sm text-muted-foreground mt-3">

@@ -161,7 +161,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // Send email using Resend
     const data = await resend.emails.send({
-      from: "Contact Form <onboarding@resend.dev>", // Replace with your verified domain
+      from: "Contact Form <contact@nowmodernize.com>", // Replace with your verified domain
       to: [toEmail],
       subject: `New Health Check Request from ${name} at ${company}`,
       html: htmlEmail,

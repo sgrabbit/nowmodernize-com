@@ -31,7 +31,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // Validate required fields
     if (!email || !resourceTitle || !resourceUrl) {
       return res.status(400).json({
-        error: "Missing required fields: email, resourceTitle, and resourceUrl are required",
+        error:
+          "Missing required fields: email, resourceTitle, and resourceUrl are required",
       });
     }
 
@@ -233,20 +234,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // Send internal notification email
     await resend.emails.send({
-      from: "Resources <onboarding@resend.dev>", // Replace with your verified domain
+      from: "Resources <contact@nowmodernize.com>", // Replace with your verified domain
       to: [toEmail],
       subject: `New Resource Download: ${resourceTitle}`,
       html: internalHtmlEmail,
       replyTo: email, // Allow direct reply to the submitter
     });
 
-    // Send confirmation email to user
-    await resend.emails.send({
-      from: "NowModernize <onboarding@resend.dev>", // Replace with your verified domain
-      to: [email],
-      subject: `Your Resource: ${resourceTitle}`,
-      html: userHtmlEmail,
-    });
+    // // Send confirmation email to user
+    // await resend.emails.send({
+    //   from: "NowModernize <hello@nowmodernize.com>", // Replace with your verified domain
+    //   to: [email],
+    //   subject: `Your Resource: ${resourceTitle}`,
+    //   html: userHtmlEmail,
+    // });
 
     console.log("Emails sent successfully for resource download");
 

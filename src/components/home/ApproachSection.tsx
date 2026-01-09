@@ -5,7 +5,7 @@ const approaches = [
   {
     icon: Wrench,
     title: "Modernization, not re-implementation",
-    description: "We rehabilitate what you already have—removing risky customizations, simplifying workflows, and stabilizing integrations without a rip-and-replace.",
+    description: "We rehabilitate what you already have, removing risky customizations, simplifying workflows, and stabilizing integrations without a rip-and-replace.",
   },
   {
     icon: Shield,
@@ -15,7 +15,7 @@ const approaches = [
   {
     icon: Cpu,
     title: "AI-ready foundations by design",
-    description: "We standardize processes and improve data reliability (CMDB, routing, ownership) with governance and security guardrails—so AI workflows can run safely in production.",
+    description: "We standardize processes and improve data reliability (CMDB, routing, ownership) with governance and security guardrails. So AI workflows can run safely in production.",
   },
 ];
 
