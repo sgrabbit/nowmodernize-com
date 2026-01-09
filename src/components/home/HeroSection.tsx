@@ -31,8 +31,8 @@ export function HeroSection() {
             transition={{ duration: 0.6 }}
             className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6"
           >
-            ServiceNow Modernization for Mid-Tier B2B SaaS—
-            <span className="text-teal-light">AI-Ready by Design.</span>
+            ServiceNow Modernization for Mid-Tier B2B SaaS
+            <br /><span className="text-teal-light">AI-Ready by Design</span>
           </motion.h1>
 
           <motion.p

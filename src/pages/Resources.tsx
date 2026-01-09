@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Mail, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Download, Mail, CheckCircle2, AlertCircle } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const resources = [
   {
+    active: true,
     title: "AI-Readiness Checklist for ServiceNow (Mid-tier SaaS)",
     oneLiner: "A fast checklist to validate whether AI will work reliably in your ServiceNow environment.",
     whatYouGet: [
@@ -22,8 +24,10 @@ const resources = [
       "Governance prerequisites (roles, approvals, safe automation controls)",
       "Integration prerequisites (sources of truth, sync hygiene, monitoring basics)",
     ],
+    url:"https://xennh3a2cyfqv68j.public.blob.vercel-storage.com/NowModernize-AI-Ready-ServiceNow-Leaders.pdf",
   },
   {
+    active: true,
     title: "ServiceNow Modernization Scorecard (Sample)",
     oneLiner: "See the exact format we use to assess an instance for modernization + AI readiness.",
     whatYouGet: [
@@ -38,8 +42,10 @@ const resources = [
       "Governance & security examples (controls, ownership, role hygiene)",
       "AI-readiness narrative (why pilots fail + what to fix first)",
     ],
+    url:"https://xennh3a2cyfqv68j.public.blob.vercel-storage.com/NowModernize-AI-Ready-ServiceNow-Leaders.pdf",
   },
   {
+    active: true,
     title: "30/60/90 Modernization Roadmap (Sample)",
     oneLiner: "A staged plan to stabilize now and modernize foundations for AI readiness next.",
     whatYouGet: [
@@ -53,8 +59,10 @@ const resources = [
       "90 days: governance hardening + automation/AI enablement pathway",
       "KPI examples: incident recurrence reduction, routing accuracy, change failure rate",
     ],
+    url:"https://xennh3a2cyfqv68j.public.blob.vercel-storage.com/NowModernize-AI-Ready-ServiceNow-Leaders.pdf",
   },
   {
+    active: true,
     title: "What \"AI-Ready\" Means for ServiceNow Leaders (1-pager)",
     oneLiner: "A plain-English definition of AI-ready—without buzzwords.",
     whatYouGet: [
@@ -68,8 +76,10 @@ const resources = [
       "How to measure readiness simply (signals, not jargon)",
       "What to prioritize first for stable, governed AI automation",
     ],
+    url:"https://xennh3a2cyfqv68j.public.blob.vercel-storage.com/NowModernize-AI-Ready-ServiceNow-Leaders.pdf",
   },
   {
+    active: true,
     title: "Upgrade Readiness Playbook (Light version)",
     oneLiner: "The minimum system to make upgrades predictable, low-risk, and repeatable.",
     whatYouGet: [
@@ -84,17 +94,74 @@ const resources = [
       "Release rhythm recommendations (so upgrades stop slipping)",
       "Risk controls (change windows, approvals, rollback discipline)",
     ],
+    url:"https://xennh3a2cyfqv68j.public.blob.vercel-storage.com/NowModernize-AI-Ready-ServiceNow-Leaders.pdf",
   },
 ];
 
 function ResourceCard({ resource, index }: { resource: typeof resources[0]; index: number }) {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Email validation
+  const isValidEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const isButtonEnabled = email.trim() !== "" && isValidEmail(email);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
+    
+    if (!isButtonEnabled || isSubmitting) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      // Submit form to API
+      const response = await fetch('/api/resource-download', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          resourceTitle: resource.title,
+          resourceUrl: resource.url,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to process download request');
+      }
+
+      // Trigger file download
+      const link = document.createElement('a');
+      link.href = resource.url;
+      link.download = `${resource.title}.pdf`;
+      link.target = '_blank';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Show success state
       setSubmitted(true);
+    } catch (err) {
+      console.error('Resource download error:', err);
+      setError(
+        err instanceof Error 
+          ? err.message 
+          : 'Failed to process request. Please try again.'
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -140,23 +207,36 @@ function ResourceCard({ resource, index }: { resource: typeof resources[0]; inde
         </div>
 
         {!submitted ? (
-          <form onSubmit={handleSubmit} className="flex gap-3">
-            <div className="relative flex-1">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              <Input
-                type="email"
-                placeholder="Enter your work email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="pl-10"
-              />
-            </div>
-            <Button type="submit" variant="default">
-              <Download className="w-4 h-4 mr-2" />
-              Access
-            </Button>
-          </form>
+          <div className="space-y-3">
+            {error && (
+              <Alert variant="destructive">
+                <AlertCircle className="h-4 w-4" />
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
+            <form onSubmit={handleSubmit} className="flex gap-3">
+              <div className="relative flex-1">
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <Input
+                  type="email"
+                  placeholder="Enter your work email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  disabled={isSubmitting}
+                  className="pl-10"
+                />
+              </div>
+              <Button 
+                type="submit" 
+                variant="default"
+                disabled={!isButtonEnabled || isSubmitting}
+              >
+                <Download className="w-4 h-4 mr-2" />
+                {isSubmitting ? "Processing..." : "Access"}
+              </Button>
+            </form>
+          </div>
         ) : (
           <div className="bg-accent rounded-lg p-4 flex items-center gap-3">
             <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
@@ -196,7 +276,7 @@ export default function Resources() {
       {/* Resources Grid */}
       <section className="py-16 md:py-20 bg-background">
         <div className="container space-y-8">
-          {resources.map((resource, index) => (
+          {resources.filter(resource => resource.active).map((resource, index) => (
             <ResourceCard key={index} resource={resource} index={index} />
           ))}
         </div>
