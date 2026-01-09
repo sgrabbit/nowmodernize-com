@@ -65,8 +65,8 @@ export default function About() {
             className="max-w-4xl"
           >
             <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6">
-              We Modernize ServiceNow So Mid-Tier SaaS Teams Can Scale—
-              <span className="gradient-text">and Become AI-Ready.</span>
+              We Modernize ServiceNow So Mid-Tier SaaS Teams Can Scale
+              <br /><span className="gradient-text">and Become AI-Ready</span>
             </h1>
             <p className="text-muted-foreground text-lg md:text-xl mb-8">
               NowModernize is an IIT-led team of senior ServiceNow practitioners focused on one thing: turning fragile, over-customized instances into stable, upgrade-ready platforms with reliable data and governance for AI.

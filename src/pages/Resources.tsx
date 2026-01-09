@@ -64,7 +64,7 @@ const resources = [
   {
     active: true,
     title: "What \"AI-Ready\" Means for ServiceNow Leaders (1-pager)",
-    oneLiner: "A plain-English definition of AI-ready—without buzzwords.",
+    oneLiner: "A plain-English definition of AI-ready without buzzwords.",
     whatYouGet: [
       "Clear definition: stable platform + standard processes + reliable data",
       "Common failure modes that break AI in production",
@@ -94,7 +94,7 @@ const resources = [
       "Release rhythm recommendations (so upgrades stop slipping)",
       "Risk controls (change windows, approvals, rollback discipline)",
     ],
-    url:"https://xennh3a2cyfqv68j.public.blob.vercel-storage.com/NowModernize-AI-Ready-ServiceNow-Leaders.pdf",
+    url:"https://xennh3a2cyfqv68j.public.blob.vercel-storage.com/NowModernize-Upgrade-Readiness-Playbook-Light-ServiceNow.pdf",
   },
 ];
 
