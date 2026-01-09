@@ -24,7 +24,7 @@ const resources = [
       "Governance prerequisites (roles, approvals, safe automation controls)",
       "Integration prerequisites (sources of truth, sync hygiene, monitoring basics)",
     ],
-    url:"https://xennh3a2cyfqv68j.public.blob.vercel-storage.com/NowModernize-AI-Ready-ServiceNow-Leaders.pdf",
+    url:"https://xennh3a2cyfqv68j.public.blob.vercel-storage.com/NowModernize-AI-Readiness-Checklist-ServiceNow-Mid-tier-SaaS.pdf",
   },
   {
     active: false,
@@ -42,7 +42,7 @@ const resources = [
       "Governance & security examples (controls, ownership, role hygiene)",
       "AI-readiness narrative (why pilots fail + what to fix first)",
     ],
-    url:"https://xennh3a2cyfqv68j.public.blob.vercel-storage.com/NowModernize-AI-Ready-ServiceNow-Leaders.pdf",
+    url:"",
   },
   {
     active: false,
@@ -59,7 +59,7 @@ const resources = [
       "90 days: governance hardening + automation/AI enablement pathway",
       "KPI examples: incident recurrence reduction, routing accuracy, change failure rate",
     ],
-    url:"https://xennh3a2cyfqv68j.public.blob.vercel-storage.com/NowModernize-AI-Ready-ServiceNow-Leaders.pdf",
+    url:"",
   },
   {
     active: true,

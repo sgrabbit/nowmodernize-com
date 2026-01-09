@@ -72,7 +72,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <Button variant="hero" size="xl" asChild className="group">
+            <Button variant="nav-cta" size="xl" asChild className="group">
               <Link to="/contact">
                 Get a Free Health Check
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />

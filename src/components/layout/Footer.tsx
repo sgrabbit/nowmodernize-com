@@ -91,7 +91,7 @@ export function Footer() {
             © {new Date().getFullYear()} Now Modernize Technology Pvt Ltd. All rights reserved.
           </p>
           <p className="text-sm text-primary-foreground/60">
-            legal@nowmodernize.com
+            hello@nowmodernize.com
           </p>
         </div>
       </div>
