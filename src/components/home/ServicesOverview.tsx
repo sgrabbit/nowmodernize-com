@@ -14,10 +14,10 @@ const services = [
   {
     icon: RefreshCcw,
     tag: "Make Upgrades Boring Again",
-    title: "Upgrade Factory",
+    title: "Upgrade Posture Management",
     pain: "Stop upgrade delays with risk-managed, repeatable releases.",
     body: "We industrialize your upgrade process with automated impact analysis, systematic testing protocols, and continuous upgrade readiness—so upgrades take days, not months.",
-    link: "/services#upgrade-factory",
+    link: "/services#upgrade-posture-management",
     linkText: "See the upgrade playbook",
   },
   {

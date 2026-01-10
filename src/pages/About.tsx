@@ -47,7 +47,7 @@ const team = [
 
 const whatWeDo = [
   { icon: Zap, text: "ServiceNow Modernization (technical debt elimination)" },
-  { icon: Database, text: "Upgrade Factory (predictable, low-risk upgrades)" },
+  { icon: Database, text: "Upgrade Posture Management (predictable, low-risk upgrades)" },
   { icon: Shield, text: "AMS with an automation bias (beyond break-fix)" },
   { icon: Cpu, text: "AI & Automation Readiness (stable processes + reliable data + governance)" },
 ];

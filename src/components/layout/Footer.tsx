@@ -29,8 +29,8 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/services#upgrade-factory" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                  Upgrade Factory
+                <a href="/services#posture-management" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+                  Upgrade Posture Management
                 </a>
               </li>
               <li>

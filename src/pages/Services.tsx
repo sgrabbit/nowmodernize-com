@@ -29,9 +29,9 @@ const services = [
     ],
   },
   {
-    id: "upgrade-factory",
+    id: "upgrade-posture-management",
     icon: RefreshCcw,
-    title: "Upgrade Factory",
+    title: "Upgrade Posture Management",
     outcome: "Make upgrades predictable and low-risk—no more \"big bang\" upgrade fear.",
     includes: [
       "Automated impact analysis on: ATF coverage gaps, customizations, integrations, UI changes, deprecated APIs/usages",
