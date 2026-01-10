@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Zap, RefreshCcw, Headphones, Bot } from "lucide-react";
+import { ArrowRight, Zap, RefreshCcw, Headphones, Bot, XCircle, CheckCircle } from "lucide-react";
 
 const services = [
   {
@@ -16,7 +16,7 @@ const services = [
     tag: "Make Upgrades Boring Again",
     title: "Upgrade Posture Management",
     pain: "Stop upgrade delays with risk-managed, repeatable releases.",
-    body: "We industrialize your upgrade process with automated impact analysis, systematic testing protocols, and continuous upgrade readiness—so upgrades take days, not months.",
+    body: "We industrialize your upgrade process with automated impact analysis, systematic testing protocols, and continuous upgrade readiness so upgrades take days, not months.",
     link: "/services#upgrade-posture-management",
     linkText: "See the upgrade playbook",
   },
@@ -104,16 +104,42 @@ export function ServicesOverview() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-12 bg-accent/50 rounded-xl p-6 md:p-8 border border-border/50"
+          className="mt-12 max-w-3xl mx-auto"
         >
-          <p className="text-center text-sm md:text-base">
-            <span className="font-semibold text-foreground">What we don't do:</span>{" "}
-            <span className="text-muted-foreground">Greenfield implementations or lift-and-shift migrations.</span>
-          </p>
-          <p className="text-center text-sm md:text-base mt-2">
-            <span className="font-semibold text-foreground">What we do:</span>{" "}
-            <span className="text-muted-foreground">Rehabilitate and modernize existing ServiceNow instances to make them stable, upgrade-ready, and AI-ready.</span>
-          </p>
+          <div className="relative bg-gradient-to-br from-card via-card to-accent/10 rounded-xl p-6 md:p-8 border border-border/50 overflow-hidden">
+
+            <div className="relative space-y-4">
+              {/* Do */}
+              <div className="group flex items-start gap-3 p-3 rounded-lg hover:bg-accent/30 transition-all duration-300">
+                <div className="w-9 h-9 rounded-full bg-teal-500/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <CheckCircle className="w-5 h-5 text-teal-500" strokeWidth={2.5} />
+                </div>
+                <div className="flex-1 pt-1">
+                  <p className="text-sm md:text-base leading-relaxed">
+                    <span className="font-bold text-foreground">We do:</span>{" "}
+                    <span className="text-muted-foreground">Rehabilitate existing ServiceNow instances—making them stable, upgrade-ready, and AI-ready.</span>
+                  </p>
+                </div>
+              </div>
+              
+              {/* Divider */}
+              <div className="relative h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+              
+              {/* Don't do */}
+              <div className="group flex items-start gap-3 p-3 rounded-lg hover:bg-accent/30 transition-all duration-300">
+                <div className="w-9 h-9 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <XCircle className="w-5 h-5 text-red-500" strokeWidth={2.5} />
+                </div>
+                <div className="flex-1 pt-1">
+                  <p className="text-sm md:text-base leading-relaxed">
+                    <span className="font-bold text-foreground">We don't do:</span>{" "}
+                    <span className="text-muted-foreground">Greenfield implementations or lift-and-shift migrations.</span>
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
