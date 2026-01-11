@@ -4,12 +4,12 @@ import { Wrench, Shield, Cpu } from "lucide-react";
 const approaches = [
   {
     icon: Wrench,
-    title: "Modernization, not re-implementation",
+    title: "Modernization, not reimplementation",
     description: "We rehabilitate what you already have, removing risky customizations, simplifying workflows, and stabilizing integrations without a rip-and-replace.",
   },
   {
     icon: Shield,
-    title: "Debt burn-down with upgrade safety",
+    title: "Debt burn down with Upgrade safety",
     description: "We identify upgrade blockers and fragile scripts, then eliminate them in a prioritized sequence so releases become predictable and low-risk.",
   },
   {

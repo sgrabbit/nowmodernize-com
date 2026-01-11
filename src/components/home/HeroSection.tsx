@@ -5,9 +5,12 @@ import { Button } from "@/components/ui/button";
 import heroBg from "@/assets/hero-bg.png";
 
 const valueBullets = [
-  "AI-Readiness Health Assessment → scorecard + prioritized roadmap",
-  "Modernize workflows across IT / Employee / Customer ops",
-  "Fix foundations: CMDB/data quality, performance, governance, security",
+  // "AI-Readiness Health Assessment → scorecard + prioritized roadmap",
+  // "Modernize workflows across IT / Employee / Customer ops",
+  // "Fix foundations: CMDB/data quality, performance, governance, security",
+  "Fix over-customization and technical debt",
+  "Make upgrades predictable with an Upgrade Posture Management",
+  "Keep the platform healthy with AMS + continuous improvement",
 ];
 
 export function HeroSection() {
@@ -31,18 +34,23 @@ export function HeroSection() {
             transition={{ duration: 0.6 }}
             className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground leading-tight mb-6"
           >
-            <span className="whitespace-nowrap">ServiceNow Modernization</span>
-            <br /><span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl">for Mid-Tier SaaS</span>
-            <br /><span className="text-teal-light text-xl sm:text-2xl md:text-3xl lg:text-4xl">AI-Ready by Design</span>
+            <span className="whitespace-nowrap">Modernize ServiceNow</span>
+            <br /><span className="text-medium sm:text-medium md:text-xl lg:text-2xl">for Mid-Tier SaaS</span>
+            <br /><span className="text-teal-light text-xl sm:text-2xl md:text-3xl lg:text-4xl">Unlock AI Automation</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-lg md:text-xl text-primary-foreground/80 mb-4 leading-relaxed"
+            className="text-lg md:text-xl text-primary-foreground/80 font-bold uppercase mt-10 mb-8 leading-tight flex items-center gap-6"
           >
-            Reduce incidents by fixing brittle customizations and CMDB/integration issues, so your platform becomes stable now and truly AI-ready next.
+            <span>Modernize</span>
+            <span className="text-primary-foreground/40">|</span>
+            <span>Upgrade</span>
+            <span className="text-primary-foreground/40">|</span>
+            <span>Run</span>
+            {/* Reduce incidents by fixing brittle customizations and CMDB/integration issues, so your platform becomes stable now and truly AI-ready next. */}
           </motion.p>
 
           <motion.ul
