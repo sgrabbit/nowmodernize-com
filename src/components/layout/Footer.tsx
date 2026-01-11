@@ -15,7 +15,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm text-primary-foreground/70 leading-relaxed">
-              ServiceNow modernization for mid-tier B2B SaaS—stable now, AI-ready next.
+              ServiceNow modernization for high growth mid-tier SaaS — stable now, AI-ready next.
             </p>
           </div>
 
