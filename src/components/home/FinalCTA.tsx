@@ -1,13 +1,28 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, MessageSquare, ClipboardCheck, Map } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getSectionTheme } from "@/lib/section-theme";
 
-const reassurances = [
-  "No-pressure call — get clarity, not a sales pitch",
-  "Modernization-only — no greenfield implementation push",
-  "Engineer-led — forward-deployed team that consults + executes",
+const steps = [
+  {
+    icon: MessageSquare,
+    number: "1",
+    title: "Discovery (30 minutes)",
+    description: "Align on pain points, modules in scope, and what 'success' means this quarter.",
+  },
+  {
+    icon: ClipboardCheck,
+    number: "2",
+    title: "Health Check (7–10 days)",
+    description: "Assess stability, customization, CMDB and integrations, governance, and performance. Deliver a scorecard and prioritized roadmap.",
+  },
+  {
+    icon: Map,
+    number: "3",
+    title: "Execution Plan (30/60/90)",
+    description: "Execute in stages to stabilize now and modernize foundations for AI readiness.",
+  },
 ];
 
 export function FinalCTA() {
@@ -26,34 +41,68 @@ export function FinalCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto text-center"
+          className="text-center mb-12"
         >
+          <span className={`${theme.label} uppercase tracking-wider text-teal-light text-primary-foreground/90 font-medium mb-3 block`}>
+            Get Started
+          </span>
           <h2 className={`${theme.heading} font-heading font-bold text-primary-foreground mb-4`}>
-            Ready to make ServiceNow stable now—
-            <span className="text-teal-light">and AI-ready next?</span>
+            Start with a 30 minute consult.{" "}
+            <span className="text-teal-light">Leave with clarity.</span>
           </h2>
-          <p className={`${theme.subheading} text-primary-foreground/80 mb-8`}>
-            Book a 30-minute consult. We'll identify what's driving repeat incidents and change risk, and outline the fastest modernization path.
+          <p className={`${theme.subheading} text-primary-foreground/80 ${theme.subheadingWidth}`}>
+            In one call, we'll understand what's driving repeat incidents and change risk. Then we'll map the fastest path to a stable, AI ready ServiceNow.
           </p>
+        </motion.div>
 
-          <ul className="flex flex-col md:flex-row justify-center gap-4 md:gap-8 mb-10">
-            {reassurances.map((item, index) => (
-              <li key={index} className={`${theme.smallText} flex items-center gap-2 text-primary-foreground/90`}>
-                <CheckCircle2 className="w-4 h-4 text-teal-light flex-shrink-0" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-12">
+          {steps.map((step, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="relative"
+            >
+              <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 h-full">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-primary-foreground font-bold text-lg">
+                    {step.number}
+                  </div>
+                  <step.icon className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className={`${theme.cardTitle} font-heading font-semibold text-foreground mb-3`}>
+                  {step.title}
+                </h3>
+                <p className={`${theme.cardDescription} text-muted-foreground leading-relaxed`}>
+                  {step.description}
+                </p>
+              </div>
+              {index < steps.length - 1 && (
+                <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2">
+                  <ArrowRight className="w-6 h-6 text-border" />
+                </div>
+              )}
+            </motion.div>
+          ))}
+        </div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="text-center"
+        >
           <Button variant="hero" size="xl" asChild className="group mb-4">
             <Link to="/contact">
               Get a Free Health Check
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
-
-          <p className={`${theme.smallText} text-primary-foreground/60`}>
-            Prefer email? Use the contact form and we'll respond within 1 business day.
+          <p className={`${theme.smallText} text-primary-foreground/60 mt-4`}>
+            No long sales cycle. We start with an assessment and earn the execution.
           </p>
         </motion.div>
       </div>
