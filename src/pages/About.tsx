@@ -4,13 +4,17 @@ import { ArrowRight, CheckCircle2, Users, Target, Cpu, Database, Shield, Zap } f
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 
-const triggers = [
-  "Repeat incidents keep resurfacing",
-  "Custom scripts and integrations have become fragile",
-  "Upgrades slip or feel unsafe",
-  "CMDB/routing drift causes mis-assignments and rework",
-  "AI initiatives stall due to inconsistent processes and unreliable data",
-];
+const missionHighlights= {
+  "Stable operations": "fewer repeat incidents and less firefighting",
+  "Lower TCO": "simpler to maintain, faster to change, less technical debt",
+  "Automation at scale": "reliable data + governance so AI and automation run safely in production",
+};
+
+const whoWeServeHighlights = {
+  "Mid tier scale": "high growth SaaS and high tech teams on ServiceNow",
+  "Operational backbone": "IT, Employee, and Customer workflows run through the platform",
+  "Automation push": "teams scaling AI and automation need stronger foundations",
+};
 
 const team = [
   {
@@ -65,8 +69,9 @@ export default function About() {
             className="max-w-4xl"
           >
             <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6">
-              We Modernize ServiceNow So Mid-Tier SaaS Teams Can Scale
-              <br /><span className="gradient-text">and Become AI-Ready</span>
+              We modernize ServiceNow
+              <br /> for high growth SaaS teams
+              <br /><span className="gradient-text text-xl sm:text-2xl md:text-3xl text-muted-foreground">Stability now. AI readiness next.</span>
             </h1>
             <p className="text-muted-foreground text-lg md:text-xl mb-8">
               NowModernize is an IIT-led team of senior ServiceNow practitioners focused on one thing: turning fragile, over-customized instances into stable, upgrade-ready platforms with reliable data and governance for AI.
@@ -96,9 +101,19 @@ export default function About() {
               <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-4">
                 Our Mission
               </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Make ServiceNow a strategic asset again—by reducing repeat incidents, de-risking change, and building the foundations required for AI to work in production.
+              <p className="text-muted-foreground mb-4">
+              Make ServiceNow a strategic asset again: stable operations, lower TCO, and automation at scale.
               </p>
+              <ul className="space-y-2">
+                {Object.entries(missionHighlights).map(([key, value]) => (
+                    <li key={key} className="flex items-start gap-2 text-base text-muted-foreground">
+                    <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span>
+                      <span className="font-semibold text-foreground">{key}:</span> {value}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
 
             <motion.div
@@ -111,14 +126,15 @@ export default function About() {
                 Who We Serve
               </h2>
               <p className="text-muted-foreground mb-4">
-                We work with mid-tier B2B SaaS companies running ServiceNow across IT, Employee, and Customer operations—especially when the platform has become "too risky to touch."
+                Built for mid tier, high growth SaaS and high tech teams that rely on ServiceNow across IT and business ops.
               </p>
-              <p className="font-semibold text-foreground text-sm mb-3">Typical triggers:</p>
               <ul className="space-y-2">
-                {triggers.map((trigger, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                {Object.entries(whoWeServeHighlights).map(([key, value]) => (
+                  <li key={key} className="flex items-start gap-2 text-base text-muted-foreground">
                     <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span>{trigger}</span>
+                    <span>
+                      <span className="font-semibold text-foreground">{key}:</span> {value}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -128,7 +144,7 @@ export default function About() {
       </section>
 
       {/* How We Work */}
-      <section className="py-16 md:py-20 bg-secondary/30">
+      <section className="py-16 md:py-20 bg-secondary/70">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -211,7 +227,7 @@ export default function About() {
       </section>
 
       {/* What We Do / Don't Do */}
-      <section className="py-16 md:py-20 bg-secondary/30">
+      <section className="py-16 md:py-20 bg-secondary/70">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <motion.div
