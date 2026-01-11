@@ -9,12 +9,12 @@ const problems = [
   },
   {
     icon: AlertTriangle,
-    title: "The platform becomes risky to change",
+    title: "Becomes risky to change",
     description: "Brittle customizations and unmanaged integrations make releases scary. Small changes trigger outages, rollbacks, and long war rooms.",
   },
   {
     icon: Database,
-    title: "Data + workflows drift, so AI stalls",
+    title: "Data + workflows drift, AI stalls",
     description: "CMDB/integration drift and fragmented workflows break routing and standardization—so automation slows down and AI initiatives fail early.",
   },
 ];
