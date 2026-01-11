@@ -31,8 +31,9 @@ export function HeroSection() {
             transition={{ duration: 0.6 }}
             className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6"
           >
-            ServiceNow Modernization for Mid-Tier B2B SaaS
-            <br /><span className="text-teal-light">AI-Ready by Design</span>
+            ServiceNow Modernization 
+            <br /><span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl">for Mid-Tier SaaS</span>
+            <br /><span className="text-teal-light text-2xl sm:text-3xl md:text-4xl lg:text-5xl">AI-Ready by Design</span>
           </motion.h1>
 
           <motion.p
@@ -41,7 +42,7 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-lg md:text-xl text-primary-foreground/80 mb-4 leading-relaxed"
           >
-            Reduce incidents by fixing brittle customizations and CMDB/integration issues—so your platform becomes stable now and truly AI-ready next.
+            Reduce incidents by fixing brittle customizations and CMDB/integration issues, so your platform becomes stable now and truly AI-ready next.
           </motion.p>
 
           <motion.p
@@ -50,7 +51,7 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="text-sm md:text-base text-teal-light font-medium mb-8"
           >
-            AI-ready = stable platform + standard processes + reliable data.
+            AI-ready = stable platform + standard processes + reliable data
           </motion.p>
 
           <motion.ul
