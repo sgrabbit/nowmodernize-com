@@ -32,7 +32,7 @@ const services = [
   },
   {
     icon: Bot,
-    tag: "Prepare for the Agentic Future",
+    tag: "Prepare for Agentic Future",
     title: "AI & Automation Readiness",
     pain: "Make 'AI-ready' real with stable workflows + reliable data + governance.",
     body: "Get your ServiceNow ready for AI with workflow standardization, data quality remediation, and guardrails required for safe, production-grade automation.",

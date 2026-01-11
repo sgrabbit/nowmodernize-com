@@ -35,7 +35,7 @@ export function Footer() {
               </li>
               <li>
                 <a href="/services#ams" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                  AMS
+                  Application Management (AMS)
                 </a>
               </li>
               <li>

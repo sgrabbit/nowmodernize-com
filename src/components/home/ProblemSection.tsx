@@ -4,19 +4,19 @@ import { getSectionTheme } from "@/lib/section-theme";
 
 const problems = [
   {
-    icon: RefreshCcw,
-    title: "Repeat incidents don't go away",
-    description: "The same issues resurface because quick fixes stack up and root causes never get eliminated—so reliability keeps slipping.",
+    icon: AlertTriangle,
+    title: "Change feels risky",
+    description: "Fear of breakage from heavy customization, unknown dependencies, and poor test coverage. Duplicate logic across scripts and workflows makes every change fragile.",
   },
   {
-    icon: AlertTriangle,
-    title: "Becomes risky to change",
-    description: "Brittle customizations and unmanaged integrations make releases scary. Small changes trigger outages, rollbacks, and long war rooms.",
+    icon: RefreshCcw,
+    title: "Performance and incidents spiral",
+    description: "Slow forms, slow lists, timeouts, and noisy incidents caused by inefficient queries and brittle design. Teams spend cycles firefighting instead of improving.",
   },
   {
     icon: Database,
-    title: "Data + workflows drift, AI stalls",
-    description: "CMDB/integration drift and fragmented workflows break routing and standardization—so automation slows down and AI initiatives fail early.",
+    title: " Upgrades and automation stall",
+    description: "Undocumented scripts and fragile integrations break during upgrades or upstream SaaS changes. Messy data and weak auditability block safe automation and agentic experiences.",
   },
 ];
 
@@ -34,14 +34,14 @@ export function ProblemSection() {
           className="text-center mb-12"
         >
           <span className={`${theme.label} uppercase tracking-wider text-teal-light text-muted-foreground font-medium mb-3 block`}>
-            The Problem 
+            The Pain 
           </span>
           <h2 className={`${theme.heading} font-heading font-bold text-foreground mb-4`}>
             ServiceNow doesn't break overnight —{" "}
             <span className="gradient-text">it drifts into a blocker</span>
           </h2>
           <p className={`${theme.subheading} text-muted-foreground ${theme.subheadingWidth}`}>
-            In mid-tier SaaS, ServiceNow usually starts strong. Then fast fixes, custom scripts, and messy data pile up, making every change more risky until every change increases incident risk.
+          In high-growth SaaS, drift shows up as repeat incidents, slowdowns, and upgrade paralysis. The root cause is usually the same: brittle customization, unmanaged dependencies, and weak governance.
           </p>
         </motion.div>
 
@@ -76,11 +76,7 @@ export function ProblemSection() {
           className="mt-12 text-center"
         >
           <p className={`${theme.bodyText} font-heading font-semibold text-foreground`}>
-            Modernization is the first step to unlock the real power of ServiceNow 
-            <span className="gradient-text"> and become AI-ready.</span>
-          </p>
-          <p className={`${theme.smallText} text-muted-foreground mt-3`}>
-            If "we're scared to touch it" sounds familiar, you're not alone.
+            When teams say “we’re scared to touch it,” the platform has drifted into a blocker.
           </p>
         </motion.div>
       </div>

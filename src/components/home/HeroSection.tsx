@@ -37,8 +37,8 @@ export function HeroSection() {
             transition={{ duration: 0.6 }}
             className={`${theme.heading} font-heading font-bold text-primary-foreground leading-tight mb-6`}
           >
-            <span className="whitespace-nowrap">Modernize ServiceNow</span>
-            <br /><span className="text-medium sm:text-medium md:text-xl lg:text-2xl">for Mid-Tier SaaS</span>
+            <span className="sm:whitespace-nowrap">Modernize ServiceNow</span>
+            <br /><span className="text-base sm:text-lg md:text-xl lg:text-2xl">for Mid-Tier SaaS</span>
             <br /><span className="text-teal-light text-xl sm:text-2xl md:text-3xl lg:text-4xl">Unlock AI Automation</span>
           </motion.h1>
 
