@@ -5,17 +5,17 @@ import { getSectionTheme } from "@/lib/section-theme";
 const differentiators = [
   {
     icon: Target,
-    title: "Low risk Start",
+    title: "Low Risk Start",
     description: "Read only first. Clear deliverables. No disruption before alignment.",
   },
   {
     icon: Users,
-    title: "Forward-Deployed Engineers",
-    description: "Consult and execute together. Less coordination overhead, faster execution.",
+    title: "Forward Deployed Engineers",
+    description: "Consult and execute together. Less coordination. Faster delivery.",
   },
   {
     icon: Cpu,
-    title: "High bar Team",
+    title: "High Bar Team",
     description: "Senior led delivery. Hands on decisions. Clean execution standards.",
     
   },
@@ -38,7 +38,7 @@ export function WhyUs() {
             Why NowModernize
           </span>
           <h2 className={`${theme.heading} font-heading font-bold text-foreground mb-4`}>
-            Modernization Partner built for SaaS teams
+            Modernization Partner built for  <span className="gradient-text">SaaS teams</span>
           </h2>
           <p className={`${theme.subheading} text-muted-foreground ${theme.subheadingWidth}`}>
             Not generalists. Built for SaaS teams that need reliability now and AI readiness next.
