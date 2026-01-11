@@ -5,18 +5,19 @@ import { getSectionTheme } from "@/lib/section-theme";
 const differentiators = [
   {
     icon: Target,
-    title: "Modernization-only (no greenfield bias)",
-    description: "We rehabilitate what you already have—remove fragile customizations, fix foundations, and make ServiceNow safe to change.",
+    title: "Low risk Start",
+    description: "Read only first. Clear deliverables. No disruption before alignment.",
   },
   {
     icon: Users,
-    title: "Forward-Deployed Engineers (consult + execute together)",
-    description: "Our engineers work embedded with your team to diagnose issues, shape the roadmap, and implement fixes in the same motion—so you get speed without handoff delays.",
+    title: "Forward-Deployed Engineers",
+    description: "Consult and execute together. Less coordination overhead, faster execution.",
   },
   {
     icon: Cpu,
-    title: "AI-ready by design (not as a slogan)",
-    description: "AI-ready = stable platform + standard processes + reliable data. We improve CMDB/integration reliability, governance, and security so AI workflows can run safely in production.",
+    title: "High bar Team",
+    description: "Senior led delivery. Hands on decisions. Clean execution standards.",
+    
   },
 ];
 
@@ -66,6 +67,17 @@ export function WhyUs() {
             </motion.div>
           ))}
         </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-12 text-center"
+        >
+          <p className={`${theme.bodyText} font-heading font-semibold text-foreground`}>
+            Start small. Prove value. Earn the long term.
+          </p>
+        </motion.div>
       </div>
     </section>
   );
