@@ -5,6 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { getSectionTheme } from "@/lib/section-theme";
 
 const faqs = [
   {
@@ -30,8 +31,10 @@ const faqs = [
 ];
 
 export function FAQSection() {
+  const theme = getSectionTheme("faq");
+  
   return (
-    <section className="py-20 md:py-28 bg-background">
+    <section className={`${theme.padding} ${theme.background}`}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -40,7 +43,7 @@ export function FAQSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className={`${theme.heading} font-heading font-bold text-foreground mb-4`}>
             Questions CIOs Ask Before They Reach Out
           </h2>
         </motion.div>
@@ -59,10 +62,10 @@ export function FAQSection() {
                 value={`item-${index}`}
                 className="bg-card rounded-xl border border-border/50 px-6 data-[state=open]:shadow-card"
               >
-                <AccordionTrigger className="text-left font-heading font-semibold text-foreground hover:text-primary py-5">
+                <AccordionTrigger className={`${theme.cardTitle} text-left font-heading font-semibold text-foreground hover:text-primary py-5`}>
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-5">
+                <AccordionContent className={`${theme.cardDescription} text-muted-foreground pb-5`}>
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

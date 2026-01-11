@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { getSectionTheme } from "@/lib/section-theme";
 import heroBg from "@/assets/hero-bg.png";
 
 const valueBullets = [
@@ -14,8 +15,10 @@ const valueBullets = [
 ];
 
 export function HeroSection() {
+  const theme = getSectionTheme("hero");
+  
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden hero-gradient">
+    <section className={theme.background}>
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img
@@ -32,7 +35,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground leading-tight mb-6"
+            className={`${theme.heading} font-heading font-bold text-primary-foreground leading-tight mb-6`}
           >
             <span className="whitespace-nowrap">Modernize ServiceNow</span>
             <br /><span className="text-medium sm:text-medium md:text-xl lg:text-2xl">for Mid-Tier SaaS</span>
@@ -43,7 +46,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-lg md:text-xl text-primary-foreground/80 font-bold uppercase mt-10 mb-8 leading-tight flex items-center gap-6"
+            className={`${theme.subheading} text-primary-foreground/80 font-bold uppercase mt-10 mb-8 leading-tight flex items-center gap-6`}
           >
             <span>Modernize</span>
             <span className="text-primary-foreground/40">|</span>
@@ -62,7 +65,7 @@ export function HeroSection() {
             {valueBullets.map((bullet, index) => (
               <li key={index} className="flex items-start gap-3 text-primary-foreground/90">
                 <CheckCircle2 className="w-5 h-5 text-teal-light flex-shrink-0 mt-0.5" />
-                <span className="text-sm md:text-base">{bullet}</span>
+                <span className={theme.bodyText}>{bullet}</span>
               </li>
             ))}
           </motion.ul>

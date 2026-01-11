@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, MessageSquare, ClipboardCheck, Map } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { getSectionTheme } from "@/lib/section-theme";
 
 const steps = [
   {
@@ -13,20 +14,22 @@ const steps = [
   {
     icon: ClipboardCheck,
     number: "2",
-    title: "Health Check + Scorecard (7–10 days)",
-    description: "A structured assessment across stability, customizations, CMDB/integrations, governance, and performance—delivered as a scorecard + prioritized roadmap.",
+    title: "Health Check (7–10 days)",
+    description: "Assess stability, customization, CMDB and integrations, governance, and performance. Deliver a scorecard and prioritized roadmap.",
   },
   {
     icon: Map,
     number: "3",
     title: "Execution Plan (30/60/90)",
-    description: "A staged plan to stabilize now and modernize foundations for AI readiness next.",
+    description: "Execute in stages to stabilize now and modernize foundations for AI readiness.",
   },
 ];
 
 export function HowWeStart() {
+  const theme = getSectionTheme("howWeStart");
+  
   return (
-    <section className="py-20 md:py-28 bg-background">
+    <section className={`${theme.padding} ${theme.background}`}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,12 +38,15 @@ export function HowWeStart() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Start with a 30-minute consult.{" "}
+          <span className={`${theme.label} uppercase tracking-wider text-teal-light text-muted-foreground font-medium mb-3 block`}>
+            Get Started
+          </span>
+          <h2 className={`${theme.heading} font-heading font-bold text-foreground mb-4`}>
+            Start with a 30 minute consult.{" "}
             <span className="gradient-text">Leave with clarity.</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
-            In one call, we'll understand what's driving repeat incidents and change risk—and map the fastest path to a stable, AI-ready ServiceNow.
+          <p className={`${theme.subheading} text-muted-foreground ${theme.subheadingWidth}`}>
+          In one call, we’ll understand what’s driving repeat incidents and change risk. Then we’ll map the fastest path to a stable, AI ready ServiceNow.
           </p>
         </motion.div>
 
@@ -61,10 +67,10 @@ export function HowWeStart() {
                   </div>
                   <step.icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="font-heading text-lg font-semibold text-foreground mb-3">
+                <h3 className={`${theme.cardTitle} font-heading font-semibold text-foreground mb-3`}>
                   {step.title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
+                <p className={`${theme.cardDescription} text-muted-foreground leading-relaxed`}>
                   {step.description}
                 </p>
               </div>
@@ -90,7 +96,7 @@ export function HowWeStart() {
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
-          <p className="text-sm text-muted-foreground mt-4">
+          <p className={`${theme.smallText} text-muted-foreground mt-4`}>
             No long sales cycle. We start with an assessment and earn the execution.
           </p>
         </motion.div>

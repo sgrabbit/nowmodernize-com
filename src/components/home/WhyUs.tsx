@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Target, Users, Cpu } from "lucide-react";
+import { getSectionTheme } from "@/lib/section-theme";
 
 const differentiators = [
   {
@@ -20,8 +21,10 @@ const differentiators = [
 ];
 
 export function WhyUs() {
+  const theme = getSectionTheme("whyUs");
+  
   return (
-    <section className="py-20 md:py-28 bg-secondary/30">
+    <section className={`${theme.padding} ${theme.background}`}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -30,10 +33,10 @@ export function WhyUs() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className={`${theme.heading} font-heading font-bold text-foreground mb-4`}>
             Why NowModernize
           </h2>
-          <p className="text-muted-foreground max-w-3xl mx-auto text-base md:text-lg">
+          <p className={`${theme.subheading} text-muted-foreground ${theme.subheadingWidth}`}>
             We're not a generalist ServiceNow shop. We modernize existing instances so mid-tier SaaS teams get reliability now—and become AI-ready next.
           </p>
         </motion.div>
@@ -51,10 +54,10 @@ export function WhyUs() {
               <div className="w-14 h-14 rounded-xl bg-accent flex items-center justify-center mb-5">
                 <item.icon className="w-7 h-7 text-primary" />
               </div>
-              <h3 className="font-heading text-lg md:text-xl font-semibold text-foreground mb-3">
+              <h3 className={`${theme.cardTitle} font-heading font-semibold text-foreground mb-3`}>
                 {item.title}
               </h3>
-              <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+              <p className={`${theme.cardDescription} text-muted-foreground leading-relaxed`}>
                 {item.description}
               </p>
             </motion.div>

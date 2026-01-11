@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { AlertTriangle, RefreshCcw, Database } from "lucide-react";
+import { getSectionTheme } from "@/lib/section-theme";
 
 const problems = [
   {
@@ -20,8 +21,10 @@ const problems = [
 ];
 
 export function ProblemSection() {
+  const theme = getSectionTheme("problem");
+  
   return (
-    <section className="py-20 md:py-28 bg-secondary/50">
+    <section className={`${theme.padding} ${theme.background}`}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -30,14 +33,14 @@ export function ProblemSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <span className="text-xs sm:text-sm uppercase tracking-wider text-teal-light text-muted-foreground font-medium mb-3 block">
+          <span className={`${theme.label} uppercase tracking-wider text-teal-light text-muted-foreground font-medium mb-3 block`}>
             The Problem 
           </span>
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className={`${theme.heading} font-heading font-bold text-foreground mb-4`}>
             ServiceNow doesn't break overnight —{" "}
-            <span className="gradient-text">it drifts into a blocker.</span>
+            <span className="gradient-text">it drifts into a blocker</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
+          <p className={`${theme.subheading} text-muted-foreground ${theme.subheadingWidth}`}>
             In mid-tier SaaS, ServiceNow usually starts strong. Then fast fixes, custom scripts, and messy data pile up, making every change more risky until every change increases incident risk.
           </p>
         </motion.div>
@@ -55,10 +58,10 @@ export function ProblemSection() {
               <div className="w-12 h-12 rounded-lg bg-accent flex items-center justify-center mb-5">
                 <problem.icon className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-heading text-lg md:text-xl font-semibold text-foreground mb-3">
+              <h3 className={`${theme.cardTitle} font-heading font-semibold text-foreground mb-3`}>
                 {problem.title}
               </h3>
-              <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+              <p className={`${theme.cardDescription} text-muted-foreground leading-relaxed`}>
                 {problem.description}
               </p>
             </motion.div>
@@ -72,11 +75,11 @@ export function ProblemSection() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-12 text-center"
         >
-          <p className="text-lg md:text-xl font-heading font-semibold text-foreground">
+          <p className={`${theme.bodyText} font-heading font-semibold text-foreground`}>
             Modernization is the first step to unlock the real power of ServiceNow 
             <span className="gradient-text"> and become AI-ready.</span>
           </p>
-          <p className="text-sm text-muted-foreground mt-3">
+          <p className={`${theme.smallText} text-muted-foreground mt-3`}>
             If "we're scared to touch it" sounds familiar, you're not alone.
           </p>
         </motion.div>

@@ -1,27 +1,33 @@
 import { motion } from "framer-motion";
 import { Wrench, Shield, Cpu } from "lucide-react";
+import { getSectionTheme } from "@/lib/section-theme";
 
 const approaches = [
   {
     icon: Wrench,
-    title: "Modernization, not reimplementation",
+    title: "Modernization,",
+    subtitle: "not reimplementation",
     description: "We rehabilitate what you already have, removing risky customizations, simplifying workflows, and stabilizing integrations without a rip-and-replace.",
   },
   {
     icon: Shield,
-    title: "Debt burn down with Upgrade safety",
+    title: "Upgrade safety,",
+    subtitle: "not release chaos",
     description: "We identify upgrade blockers and fragile scripts, then eliminate them in a prioritized sequence so releases become predictable and low-risk.",
   },
   {
     icon: Cpu,
-    title: "AI-ready foundations by design",
+    title: "AI-ready foundations,",
+    subtitle: "by design",
     description: "We standardize processes and improve data reliability (CMDB, routing, ownership) with governance and security guardrails. So AI workflows can run safely in production.",
   },
 ];
 
 export function ApproachSection() {
+  const theme = getSectionTheme("approach");
+  
   return (
-    <section className="py-20 md:py-28 bg-background">
+    <section className={`${theme.padding} ${theme.background}`}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -30,9 +36,16 @@ export function ApproachSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Our Approach
+          <span className={`${theme.label} uppercase tracking-wider text-teal-light text-muted-foreground font-medium mb-3 block`}>
+            The Approach 
+          </span>
+          <h2 className={`${theme.heading} font-heading font-bold text-foreground mb-4`}>
+            Modernization in the right order—{" "}
+            <span className="gradient-text">Stability → Upgrades → AI</span>
           </h2>
+          <p className={`${theme.subheading} text-muted-foreground ${theme.subheadingWidth}`}>
+            Mid-tier SaaS teams can't pause delivery for a rebuild. We rehabilitate what you already have by reducing risky customizations, fixing CMDB/integration drift, and putting upgrade-safe patterns in place so change becomes predictable and AI readiness becomes real.
+          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6 md:gap-8">
@@ -49,10 +62,14 @@ export function ApproachSection() {
               <div className="w-14 h-14 rounded-xl gradient-bg flex items-center justify-center mb-5">
                 <approach.icon className="w-7 h-7 text-primary-foreground" />
               </div>
-              <h3 className="font-heading text-lg md:text-xl font-semibold text-foreground mb-3">
+              <h3 className={`${theme.cardTitle} font-heading font-semibold text-foreground mb-1`}>
                 {approach.title}
+                <br />
+                <span className="">
+                  {approach.subtitle}
+                </span>
               </h3>
-              <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+              <p className={`${theme.cardDescription} text-muted-foreground leading-relaxed mt-2`}>
                 {approach.description}
               </p>
             </motion.div>
@@ -66,8 +83,8 @@ export function ApproachSection() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-10 text-center"
         >
-          <p className="text-muted-foreground text-sm md:text-base">
-            <span className="font-semibold text-foreground">Scorecard → Roadmap → Execution.</span>{" "}
+          <p className={`${theme.bodyText} font-heading font-semibold text-foreground`}>
+          <span className="gradient-text">Scorecard → Roadmap → Execution</span>{" "}:
             Built for mid-tier SaaS teams that need reliability now and AI-readiness next.
           </p>
         </motion.div>
