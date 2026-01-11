@@ -30,6 +30,9 @@ export function ProblemSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
+          <span className="text-xs sm:text-sm uppercase tracking-wider text-teal-light text-muted-foreground font-medium mb-3 block">
+            The Problem 
+          </span>
           <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
             ServiceNow doesn't break overnight —{" "}
             <span className="gradient-text">it drifts into a blocker.</span>
