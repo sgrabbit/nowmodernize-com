@@ -33,11 +33,14 @@ export function WhyUs() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className={`${theme.heading} font-heading font-bold text-foreground mb-4`}>
+          <span className={`${theme.label} uppercase tracking-wider text-teal-light text-muted-foreground font-medium mb-3 block`}>
             Why NowModernize
+          </span>
+          <h2 className={`${theme.heading} font-heading font-bold text-foreground mb-4`}>
+            Modernization Partner built for SaaS teams
           </h2>
           <p className={`${theme.subheading} text-muted-foreground ${theme.subheadingWidth}`}>
-            We're not a generalist ServiceNow shop. We modernize existing instances so mid-tier SaaS teams get reliability now—and become AI-ready next.
+            Not generalists. Built for SaaS teams that need reliability now and AI readiness next.
           </p>
         </motion.div>
 

@@ -30,6 +30,20 @@ export function FinalCTA() {
   
   return (
     <section className={`${theme.padding} ${theme.background}`}>
+      {/* Grid pattern overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.07]"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, currentColor 1px, transparent 1px),
+            linear-gradient(to bottom, currentColor 1px, transparent 1px)
+          `,
+          backgroundSize: '48px 48px',
+          color: 'rgb(255, 255, 255)',
+        }}
+      />
+      
+      {/* Decorative gradient orbs */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-teal rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-light rounded-full blur-3xl" />
