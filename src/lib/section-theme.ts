@@ -112,7 +112,7 @@ export const pageSectionThemes = {
   } as SectionTheme,
   services: {
     ...sectionThemes.large,
-    background: "bg-secondary/70",
+    background: "teal-band-gradient",
   } as SectionTheme,
   howWeStart: {
     ...sectionThemes.large,
