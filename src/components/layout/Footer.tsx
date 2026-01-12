@@ -1,6 +1,37 @@
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.svg";
 
+const SERVICES_LINKS = [
+  { href: "/services#modernization", label: "ServiceNow Modernization" },
+  { href: "/services#posture-management", label: "Upgrade Posture Management" },
+  { href: "/services#ams", label: "Application Management (AMS)" },
+  { href: "/services#ai-automation", label: "AI & Automation Readiness" },
+] as const;
+
+const COMPANY_LINKS = [
+  { to: "/about", label: "About" },
+  { to: "/resources", label: "Resources" },
+  { to: "/contact", label: "Contact" },
+] as const;
+
+const LEGAL_LINKS = [
+  { to: "/privacy", label: "Privacy Policy" },
+  { to: "/terms", label: "Terms of Use" },
+] as const;
+
+const FOOTER_SECTIONS = [
+  {
+    title: "Services",
+    links: SERVICES_LINKS,
+    type: "anchor" as const,
+  },
+  {
+    title: "Company",
+    links: COMPANY_LINKS,
+    type: "router" as const,
+  },
+] as const;
+
 export function Footer() {
   return (
     <footer className="bg-navy text-primary-foreground/90">
@@ -15,84 +46,61 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm text-primary-foreground/70 leading-relaxed">
-              ServiceNow modernization for high growth mid-tier SaaS — stable now, AI-ready next.
+              Stability now. Upgrade safety always. AI readiness next.
             </p>
           </div>
 
-          {/* Services */}
-          <div>
-            <h4 className="font-heading font-semibold text-sm mb-4 text-primary-foreground">Services</h4>
-            <ul className="space-y-3">
-              <li>
-                <a href="/services#modernization" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                  ServiceNow Modernization
-                </a>
-              </li>
-              <li>
-                <a href="/services#posture-management" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                  Upgrade Posture Management
-                </a>
-              </li>
-              <li>
-                <a href="/services#ams" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                  Application Management (AMS)
-                </a>
-              </li>
-              <li>
-                <a href="/services#ai-automation" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                  AI & Automation Readiness
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="font-heading font-semibold text-sm mb-4 text-primary-foreground">Company</h4>
-            <ul className="space-y-3">
-              <li>
-                <Link to="/about" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link to="/resources" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                  Resources
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="font-heading font-semibold text-sm mb-4 text-primary-foreground">Legal</h4>
-            <ul className="space-y-3">
-              <li>
-                <Link to="/privacy" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link to="/terms" className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">
-                  Terms of Use
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {/* Dynamic Sections */}
+          {FOOTER_SECTIONS.map((section) => (
+            <div key={section.title}>
+              <h4 className="font-heading font-semibold text-sm mb-4 text-primary-foreground">
+                {section.title}
+              </h4>
+              <ul className="space-y-3">
+                {section.links.map((link) => (
+                  <li key={'href' in link ? link.href : link.to}>
+                    {section.type === "anchor" && 'href' in link ? (
+                      <a
+                        href={link.href}
+                        className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                      >
+                        {link.label}
+                      </a>
+                    ) : 'to' in link ? (
+                      <Link
+                        to={link.to}
+                        className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    ) : null}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
         <div className="border-t border-primary-foreground/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-primary-foreground/60">
             © {new Date().getFullYear()} Now Modernize Technology Pvt Ltd. All rights reserved.
           </p>
-          <p className="text-sm text-primary-foreground/60">
-            hello@nowmodernize.com
-          </p>
+          <div className="flex items-center gap-2 text-sm text-primary-foreground/60">
+            {LEGAL_LINKS.map((link, index) => (
+              <>
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="hover:text-primary-foreground transition-colors"
+                >
+                  {link.label}
+                </Link>
+                {index < LEGAL_LINKS.length - 1 && (
+                  <span className="text-primary-foreground/40">|</span>
+                )}
+              </>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
