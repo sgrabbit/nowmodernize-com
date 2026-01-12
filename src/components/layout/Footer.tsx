@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Mail, Phone } from "lucide-react";
 import logo from "@/assets/logo.svg";
 
 const SERVICES_LINKS = [
@@ -40,21 +41,33 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-1">
-              <img src={logo} alt="NowModernize" className="h-8 w-auto brightness-0 invert" />
-              <span className="font-heading font-bold text-xl text-primary-foreground">
-                NowModernize
-              </span>
+            <Link to="/" className="flex items-start gap-3 mb-4">
+              <img src={logo} alt="NowModernize" className="h-12 w-auto brightness-0 invert flex-shrink-0" />
+              <div className="flex flex-col">
+                <span className="font-heading font-bold text-2xl text-primary-foreground leading-none">
+                  Now
+                </span>
+                <span className="font-heading font-bold text-2xl text-primary-foreground leading-none">
+                  Modernize
+                </span>
+              </div>
             </Link>
-            <p className="text-sm text-primary-foreground/70 leading-relaxed uppercase ml-3">
-              Modernize . upgrade . Run 
-            </p>
+            <div className="flex flex-col gap-1.5 text-sm text-primary-foreground/70">
+              <a href="mailto:hello@nowmodernize.com" className="flex items-center gap-1.5 hover:text-primary-foreground transition-colors">
+                <Mail className="h-4 w-4" />
+                <span>hello@NowModernize.com</span>
+              </a>
+              <a href="tel:+353849089988" className="flex items-center gap-1.5 hover:text-primary-foreground transition-colors">
+                <Phone className="h-4 w-4" />
+                <span>+353 84 908 9988</span>
+              </a>
+            </div>
           </div>
 
           {/* Dynamic Sections */}
           {FOOTER_SECTIONS.map((section) => (
             <div key={section.title}>
-              <h4 className="font-heading font-semibold text-sm mb-4 text-primary-foreground">
+              <h4 className="font-heading font-semibold text-xl mb-4 text-primary-foreground">
                 {section.title}
               </h4>
               <ul className="space-y-3">
@@ -63,14 +76,14 @@ export function Footer() {
                     {section.type === "anchor" && 'href' in link ? (
                       <a
                         href={link.href}
-                        className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                        className="text-lg text-primary-foreground/70 hover:text-primary-foreground transition-colors"
                       >
                         {link.label}
                       </a>
                     ) : 'to' in link ? (
                       <Link
                         to={link.to}
-                        className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                        className="text-lg text-primary-foreground/70 hover:text-primary-foreground transition-colors"
                       >
                         {link.label}
                       </Link>
@@ -82,7 +95,7 @@ export function Footer() {
           ))}
 
           {/* CTA & Contact */}
-          <div className="space-y-6">
+          <div className="space-y-6 bg-white p-6 rounded-lg border border-gray-200">
             {/* CTA Block */}
             <div className="space-y-3">
               <Button 
@@ -92,32 +105,18 @@ export function Footer() {
               >
                 <Link to="/contact">Get a Free Health Check</Link>
               </Button>
-              <p className="text-xs text-primary-foreground/60 leading-relaxed">
-                30-minute consult • clear deliverables • low-risk start
-              </p>
-            </div>
-
-            {/* Contact Block */}
-            <div className="space-y-2">
-              <h4 className="font-heading font-semibold text-sm text-primary-foreground">
-                Contact
-              </h4>
-              <a 
-                href="mailto:hello@nowmodernize.com"
-                className="block text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
-              >
-                hello@nowmodernize.com
-              </a>
-              <p className="text-xs text-primary-foreground/60">
-                Response within 1 business day
-              </p>
+              <ul className="text-sm text-gray-600 leading-relaxed space-y-1 list-disc list-inside">
+                <li>30-minute Consult</li>
+                <li>Clear deliverables</li>
+                <li>Low-risk start</li>
+              </ul>
             </div>
           </div>
         </div>
 
         <div className="border-t border-primary-foreground/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-primary-foreground/60">
-            © {new Date().getFullYear()} Now Modernize Technology Pvt Ltd. All rights reserved.
+            © {new Date().getFullYear()} NowModernize Technology Pvt Ltd. All rights reserved.
           </p>
           <div className="flex items-center gap-2 text-sm text-primary-foreground/60">
             {LEGAL_LINKS.map((link, index) => (

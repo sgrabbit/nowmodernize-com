@@ -104,11 +104,11 @@ export const pageSectionThemes = {
   } as SectionTheme,
   problem: {
     ...sectionThemes.large,
-    background: "bg-secondary/70",
+    background: "bg-background",
   } as SectionTheme,
   approach: {
     ...sectionThemes.large,
-    background: "bg-background",
+    background: "bg-slate-50",
   } as SectionTheme,
   services: {
     ...sectionThemes.large,
