@@ -27,21 +27,21 @@ export default function ThankYou() {
             {/* Google Calendar Appointment Scheduling Embed */}
             <div className="bg-card rounded-xl border border-border/50 overflow-hidden">
               <iframe 
-                src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0Pu0d5E1E8Nc9fRkFvQxIxMTExMTExMTExMTExMTEx?gv=true"
+                src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0YdsuOedFmOzfLj1BN93zKVI4IEbrHWuXPOmO0YD-2467o5nmiGCuk-qdvIXBmxKm93Kiw-v7r?gv=true"
                 style={{ border: 0 }}
                 width="100%"
                 height="600"
                 frameBorder="0"
-                title="Schedule a 30-min Health Check Intro"
+                title="Schedule a 30-min Health Check Intro with NowModernize"
                 className="w-full"
               />
               <p className="text-xs text-muted-foreground p-4 text-center border-t border-border/50">
-                Replace the iframe src with your Google Calendar appointment scheduling link
+                Schedule a 30-min Health Check Intro with NowModernize
               </p>
             </div>
 
             <p className="text-sm text-muted-foreground mt-8">
-              We'll reach out via email within 1 business day to confirm next steps.
+              We'll reach out via email within 2 business day to confirm next steps.
             </p>
           </motion.div>
         </div>
