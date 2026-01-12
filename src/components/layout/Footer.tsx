@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.svg";
 
 const SERVICES_LINKS = [
@@ -39,14 +40,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4">
+            <Link to="/" className="flex items-center gap-2 mb-1">
               <img src={logo} alt="NowModernize" className="h-8 w-auto brightness-0 invert" />
-              <span className="font-heading font-bold text-lg text-primary-foreground">
+              <span className="font-heading font-bold text-xl text-primary-foreground">
                 NowModernize
               </span>
             </Link>
-            <p className="text-sm text-primary-foreground/70 leading-relaxed">
-              Stability now. Upgrade safety always. AI readiness next.
+            <p className="text-sm text-primary-foreground/70 leading-relaxed uppercase ml-3">
+              Modernize . upgrade . Run 
             </p>
           </div>
 
@@ -79,6 +80,39 @@ export function Footer() {
               </ul>
             </div>
           ))}
+
+          {/* CTA & Contact */}
+          <div className="space-y-6">
+            {/* CTA Block */}
+            <div className="space-y-3">
+              <Button 
+                asChild 
+                size="sm" 
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+              >
+                <Link to="/contact">Get a Free Health Check</Link>
+              </Button>
+              <p className="text-xs text-primary-foreground/60 leading-relaxed">
+                30-minute consult • clear deliverables • low-risk start
+              </p>
+            </div>
+
+            {/* Contact Block */}
+            <div className="space-y-2">
+              <h4 className="font-heading font-semibold text-sm text-primary-foreground">
+                Contact
+              </h4>
+              <a 
+                href="mailto:hello@nowmodernize.com"
+                className="block text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+              >
+                hello@nowmodernize.com
+              </a>
+              <p className="text-xs text-primary-foreground/60">
+                Response within 1 business day
+              </p>
+            </div>
+          </div>
         </div>
 
         <div className="border-t border-primary-foreground/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
