@@ -384,11 +384,11 @@ export default function BlogPost() {
                     )}
                     <div>
                       <div className="font-medium text-foreground">{post.author.name}</div>
-                      {post.author.bio && (
+                      {/* {post.author.bio && (
                         <div className="text-sm text-muted-foreground line-clamp-1">
                           {post.author.bio}
                         </div>
-                      )}
+                      )} */}
                     </div>
                   </div>
                 )}
