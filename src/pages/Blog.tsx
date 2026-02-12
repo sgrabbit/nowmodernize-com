@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import { SEO, BreadcrumbStructuredData } from "@/components/SEO";
 import { sanityClient, urlFor, type Post } from "@/lib/sanity";
 import groq from "groq";
 import { format } from "date-fns";
@@ -17,7 +18,15 @@ const postsQuery = groq`
     publishedAt,
     excerpt,
     image,
-    body
+    body,
+    readingTime,
+    tags,
+    author->{
+      name,
+      slug,
+      image,
+      bio
+    }
   }
 `;
 
@@ -45,7 +54,8 @@ function calculateReadingTime(body?: Post['body']): number {
 }
 
 function BlogCard({ post, index }: { post: Post; index: number }) {
-  const readingTime = calculateReadingTime(post.body);
+  // Use readingTime from Sanity if available, otherwise calculate it
+  const readingTime = post.readingTime || calculateReadingTime(post.body);
   
   return (
     <motion.article
@@ -68,6 +78,12 @@ function BlogCard({ post, index }: { post: Post; index: number }) {
         
         <div className="space-y-3">
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
+            {post.author && (
+              <>
+                <span>{post.author.name}</span>
+                <span className="text-muted-foreground/50">·</span>
+              </>
+            )}
             <time dateTime={post.publishedAt}>
               {format(new Date(post.publishedAt), 'MMM d, yyyy')}
             </time>
@@ -98,6 +114,22 @@ export default function Blog() {
 
   return (
     <Layout>
+      {/* SEO Meta Tags */}
+      <SEO
+        title="Blog"
+        description="Insights, strategies, and practical guidance for modernizing ServiceNow and achieving AI readiness. Expert advice for mid-tier B2B SaaS teams."
+        canonical="https://nowmodernize.com/blog"
+        type="website"
+      />
+
+      {/* Breadcrumb Structured Data */}
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: 'https://nowmodernize.com' },
+          { name: 'Blog', url: 'https://nowmodernize.com/blog' },
+        ]}
+      />
+
       {/* Hero */}
       <section className="py-16 md:py-24 border-b border-border/30">
         <div className="container px-6 md:px-8">

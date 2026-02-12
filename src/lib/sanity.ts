@@ -52,6 +52,22 @@ export interface PortableTextImage {
   caption?: string;
 }
 
+// Author type definition
+export interface Author {
+  _id: string;
+  name: string;
+  slug: {
+    current: string;
+  };
+  image?: {
+    asset: {
+      _ref: string;
+      _type: string;
+    };
+  };
+  bio?: string;
+}
+
 // Post type definition
 export interface Post {
   _id: string;
@@ -69,4 +85,7 @@ export interface Post {
     };
   };
   body?: (PortableTextBlock | PortableTextImage)[];
+  author?: Author;
+  tags?: string[];
+  readingTime?: number;
 }

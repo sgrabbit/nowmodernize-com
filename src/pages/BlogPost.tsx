@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import { SEO, ArticleStructuredData, BreadcrumbStructuredData } from "@/components/SEO";
 import { sanityClient, urlFor, type Post, type PortableTextBlock, type PortableTextImage, type PortableTextChild, type PortableTextMarkDef } from "@/lib/sanity";
 import groq from "groq";
 import { format } from "date-fns";
@@ -18,7 +19,15 @@ const postQuery = groq`
     publishedAt,
     excerpt,
     image,
-    body
+    body,
+    readingTime,
+    tags,
+    author->{
+      name,
+      slug,
+      image,
+      bio
+    }
   }
 `;
 
@@ -282,10 +291,49 @@ export default function BlogPost() {
     return <Navigate to="/blog" replace />;
   }
 
-  const readingTime = calculateReadingTime(post.body);
+  // Use readingTime from Sanity if available, otherwise calculate it
+  const readingTime = post.readingTime || calculateReadingTime(post.body);
+  const postUrl = `https://nowmodernize.com/blog/${post.slug.current}`;
+  const postImage = post.image ? urlFor(post.image).width(1200).height(630).url() : undefined;
+  const authorName = post.author?.name || 'NowModernize';
 
   return (
     <Layout>
+      {/* SEO Meta Tags */}
+      <SEO
+        title={post.title}
+        description={post.excerpt || `Read ${post.title} on the NowModernize blog`}
+        image={postImage}
+        canonical={postUrl}
+        type="article"
+        article={{
+          publishedAt: post.publishedAt,
+          modifiedAt: post._createdAt,
+          author: authorName,
+          tags: post.tags,
+        }}
+      />
+
+      {/* Structured Data */}
+      <ArticleStructuredData
+        title={post.title}
+        description={post.excerpt || ''}
+        image={postImage}
+        publishedAt={post.publishedAt}
+        modifiedAt={post._createdAt}
+        url={postUrl}
+        author={authorName}
+      />
+
+      {/* Breadcrumb Structured Data */}
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: 'https://nowmodernize.com' },
+          { name: 'Blog', url: 'https://nowmodernize.com/blog' },
+          { name: post.title, url: postUrl },
+        ]}
+      />
+
       <article>
         {/* Back Button */}
         <section className="py-6 md:py-8 bg-background border-b border-border/30">
@@ -323,17 +371,40 @@ export default function BlogPost() {
                 </p>
               )}
 
-              {/* Meta */}
-              <div className="flex items-center gap-4 text-sm text-muted-foreground pt-6 border-t border-border/40">
-                <div className="flex items-center gap-1.5">
-                  <Calendar className="w-4 h-4" />
-                  <time dateTime={post.publishedAt}>
-                    {format(new Date(post.publishedAt), 'MMM d, yyyy')}
-                  </time>
-                </div>
-                <span className="text-muted-foreground/50">·</span>
-                <div className="flex items-center gap-1.5">
-                  <span>{readingTime} min read</span>
+              {/* Author & Meta */}
+              <div className="pt-6 border-t border-border/40">
+                {post.author && (
+                  <div className="flex items-center gap-4 mb-4">
+                    {post.author.image && (
+                      <img
+                        src={urlFor(post.author.image).width(48).height(48).url()}
+                        alt={post.author.name}
+                        className="w-12 h-12 rounded-full object-cover"
+                      />
+                    )}
+                    <div>
+                      <div className="font-medium text-foreground">{post.author.name}</div>
+                      {post.author.bio && (
+                        <div className="text-sm text-muted-foreground line-clamp-1">
+                          {post.author.bio}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+                
+                <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-1.5">
+                    <Calendar className="w-4 h-4" />
+                    <time dateTime={post.publishedAt}>
+                      {format(new Date(post.publishedAt), 'MMM d, yyyy')}
+                    </time>
+                  </div>
+                  <span className="text-muted-foreground/50">·</span>
+                  <div className="flex items-center gap-1.5">
+                    <Clock className="w-4 h-4" />
+                    <span>{readingTime} min read</span>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -370,6 +441,22 @@ export default function BlogPost() {
             >
               {post.body && (
                 <PortableText value={post.body} />
+              )}
+
+              {/* Tags */}
+              {post.tags && post.tags.length > 0 && (
+                <div className="mt-12 pt-8 border-t border-border/40">
+                  <div className="flex flex-wrap gap-2">
+                    {post.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-secondary/50 text-foreground hover:bg-secondary transition-colors"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               )}
             </motion.div>
           </div>
