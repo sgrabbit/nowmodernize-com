@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
-import { ArrowRight, Zap, RefreshCcw, Headphones, Bot, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Zap, RefreshCcw, Headphones, Bot, Users, CheckCircle2 } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 
@@ -92,6 +92,28 @@ const services = [
       "AI-readiness gaps list with \"fix-first\" sequence",
       "Governance and guardrails checklist (what must be true before scaling)",
       "Enablement plan for automation/AI rollout (measured, staged)",
+    ],
+  },
+  {
+    id: "managed-delivery-capacity",
+    icon: Users,
+    title: "Managed Delivery Capacity",
+    outcome: "Ramp ServiceNow delivery quickly with committed capacity and continuity without forecast risk becoming your problem.",
+    includes: [
+      "Dedicated delivery capacity aligned to your operating model (backlog, reviews, QA standards, documentation hygiene)",
+      "Continuity by design: bench buffer and replacement coverage so delivery doesn't stall mid-sprint",
+      "Delivery governance: account manager, weekly cadence, senior escalation for complexity and quality control",
+      "Time-zone execution: India-based with US overlap for standups, triage, and stakeholder sync",
+    ],
+    phases: [
+      { title: "Phase 1 — Calibrate & Forecast", desc: "capacity planning, role mapping, module fit, overlap expectations, ramp plan" },
+      { title: "Phase 2 — Ramp & Embed", desc: "interviews/fitment, onboarding, access + environments, ways-of-working alignment" },
+      { title: "Phase 3 — Govern & Scale", desc: "weekly delivery health checks, continuity management, feedback loop, scale-up readiness" },
+    ],
+    deliverables: [
+      "Monthly delivery review (capacity health, risks, what's next)",
+      "Continuity plan (bench buffer + replacement coverage)",
+      "Ramp plan and onboarding timeline (aligned to your next-quarter forecast)",
     ],
   },
 ];
@@ -194,7 +216,7 @@ export default function Services() {
 
               <div className="grid lg:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="font-heading font-semibold text-foreground mb-4">What this includes (technical):</h3>
+                  <h3 className="font-heading font-semibold text-foreground mb-4">What this includes:</h3>
                   <ul className="space-y-3">
                     {service.includes.map((item, i) => (
                       <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">

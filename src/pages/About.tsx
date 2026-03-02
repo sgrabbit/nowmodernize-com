@@ -12,9 +12,9 @@ const missionHighlights= {
 };
 
 const whoWeServeHighlights = {
-  "Mid tier scale": "high growth SaaS and high tech teams on ServiceNow",
-  "Operational backbone": "IT, Employee, and Customer workflows run through the platform",
-  "Automation push": "teams scaling AI and automation need stronger foundations",
+  "SaaS teams on ServiceNow": "Mid-tier B2B SaaS and high-tech orgs scaling on ServiceNow",
+  "Modernization-first leaders": "Teams stabilizing instances and making upgrades safe and repeatable",
+  "Partners needing capacity": "Select ServiceNow partners using Managed Delivery Capacity for fast ramp and continuity",
 };
 
 const team = [
