@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Zap, RefreshCcw, Headphones, Bot, XCircle, CheckCircle } from "lucide-react";
+import { ArrowRight, Zap, RefreshCcw, Headphones, Bot, Users, XCircle, CheckCircle } from "lucide-react";
 import { getSectionTheme } from "@/lib/section-theme";
 
 const services = [
@@ -38,6 +38,15 @@ const services = [
     body: "Get your ServiceNow ready for AI with workflow standardization, data quality remediation, and guardrails required for safe, production-grade automation.",
     link: "/services#ai-automation",
     linkText: "See what AI-ready means",
+  },
+  {
+    icon: Users,
+    tag: "For Fast Ramp & Continuity",
+    title: "Managed Delivery Capacity",
+    pain: "Add delivery-ready ServiceNow engineers quickly — with continuity built in.",
+    body: "Designed for fast ramp-up when you need capacity now. India-based with US time-zone overlap, onboarding in ~2 weeks, and continuity via bench buffer + replacement coverage.",
+    link: "https://www.nowmodernize.com/contact",
+    linkText: "Talk to us about capacity",
   },
 ];
 
