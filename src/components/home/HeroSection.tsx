@@ -3,7 +3,6 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getSectionTheme } from "@/lib/section-theme";
 import { Reveal } from "@/components/motion";
-import heroBg from "@/assets/hero-bg.png";
 
 const valueBullets = [
   // "AI-Readiness Health Assessment → scorecard + prioritized roadmap",
@@ -22,8 +21,10 @@ export function HeroSection() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img
-          src={heroBg}
+          src="/hero-bg.png"
           alt=""
+          loading="eager"
+          fetchPriority="high"
           className="w-full h-full object-cover opacity-30 brightness-90"
         />
         {/* <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/95 via-navy/90 to-navy/70" /> */}
