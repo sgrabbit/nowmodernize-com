@@ -126,13 +126,23 @@ export default function CaseStudies() {
       />
 
       {/* Hero */}
-      <section className="py-16 md:py-24 border-b border-border/30">
-        <div className="container px-6 md:px-8">
+      <section className="relative py-16 md:py-24 hero-gradient overflow-hidden border-b border-border/30">
+        <div className="absolute inset-0">
+          <img
+            src="/casestudy-bg.jpg"
+            alt=""
+            loading="eager"
+            fetchPriority="high"
+            className="w-full h-full object-cover opacity-30 brightness-90"
+          />
+        </div>
+
+        <div className="container px-6 md:px-8 relative z-10">
           <Reveal trigger="mount" className="max-w-[1100px] mx-auto">
-            <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl font-bold text-foreground mb-6 tracking-tight">
+            <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl font-bold text-primary-foreground mb-6 tracking-tight">
               Case Studies
             </h1>
-            <p className="text-muted-foreground text-xl md:text-2xl leading-relaxed max-w-3xl">
+            <p className="text-primary-foreground/80 text-xl md:text-2xl leading-relaxed max-w-3xl">
               Real-world ServiceNow modernization success stories from mid-tier
               B2B SaaS teams.
             </p>

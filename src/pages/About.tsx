@@ -114,22 +114,32 @@ export default function About() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container">
+      <section className="relative py-16 md:py-24 hero-gradient overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/about-bg.jpg"
+            alt=""
+            loading="eager"
+            fetchPriority="high"
+            className="w-full h-full object-cover opacity-30 brightness-90"
+          />
+        </div>
+
+        <div className="container relative z-10">
           <Reveal trigger="mount" className="max-w-4xl">
-            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6">
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
               We modernize ServiceNow
               <br /> for high growth SaaS teams
-              <br /><span className="gradient-text text-xl sm:text-2xl md:text-3xl text-muted-foreground">Stability now. AI readiness next.</span>
+              <br /><span className="text-teal-light text-xl sm:text-2xl md:text-3xl">Stability now. AI readiness next.</span>
             </h1>
-            <p className="text-muted-foreground text-lg md:text-xl mb-8">
+            <p className="text-primary-foreground/80 text-lg md:text-xl mb-8">
               NowModernize is an IIT-led team of senior ServiceNow practitioners focused on one thing: turning fragile, over-customized instances into stable, upgrade-ready platforms with reliable data and governance for AI.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button variant="default" size="lg" asChild>
+              <Button variant="nav-cta" size="lg" asChild>
                 <Link to="/contact">Get a Free Health Check</Link>
               </Button>
-              <Button variant="outline" size="lg" asChild>
+              <Button variant="outline" size="lg" asChild className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
                 <Link to="/knowledge-base">View Knowledge Base</Link>
               </Button>
             </div>

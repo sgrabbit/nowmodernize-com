@@ -225,13 +225,23 @@ export default function KnowledgeBase() {
       />
 
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container">
+      <section className="relative py-16 md:py-24 hero-gradient overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/knowledgebase-bg.jpg"
+            alt=""
+            loading="eager"
+            fetchPriority="high"
+            className="w-full h-full object-cover opacity-30 brightness-90"
+          />
+        </div>
+
+        <div className="container relative z-10">
           <Reveal trigger="mount" className="max-w-3xl">
-            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
               Knowledge Base
             </h1>
-            <p className="text-muted-foreground text-lg md:text-xl">
+            <p className="text-primary-foreground/80 text-lg md:text-xl">
               Practical guides for mid-tier B2B SaaS teams modernizing
               ServiceNow to become AI-ready (stable platform + standard
               processes + reliable data).

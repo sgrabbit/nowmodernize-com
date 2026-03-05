@@ -136,31 +136,42 @@ export default function Services() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container">
+      <section className="relative py-16 md:py-24 hero-gradient overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="/services-bg.jpg"
+            alt=""
+            loading="eager"
+            fetchPriority="high"
+            className="w-full h-full object-cover opacity-30 brightness-90"
+          />
+        </div>
+
+        <div className="container relative z-10">
           <Reveal trigger="mount" className="max-w-3xl">
-            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
               Services
             </h1>
-            <p className="text-muted-foreground text-lg md:text-xl mb-6">
+            <p className="text-primary-foreground/80 text-lg md:text-xl mb-6">
               Modernization-first ServiceNow services for mid-tier B2B SaaS, reduce repeat incidents now, become AI-ready next.
             </p>
             <div className="flex flex-wrap gap-4 mb-8">
-              <Button variant="default" size="lg" asChild>
+              <Button variant="nav-cta" size="lg" asChild>
                 <Link to="/contact">Get a Free Health Check</Link>
               </Button>
-              <Button variant="outline" size="lg" asChild>
+              <Button variant="outline" size="lg" asChild className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
                 <Link to="/knowledge-base">View Knowledge Base</Link>
               </Button>
             </div>
-            <div className="bg-accent/70 rounded-lg p-4 border border-border/50">
+            <div className="bg-primary-foreground/10 backdrop-blur-sm rounded-lg p-4 border border-primary-foreground/20">
               <p className="text-sm">
-                <span className="font-semibold text-foreground">We don't do:</span>{" "}
-                <span className="text-muted-foreground">Greenfield implementations or lift-and-shift migrations.</span>
+                <span className="font-semibold text-primary-foreground">We don't do:</span>{" "}
+                <span className="text-primary-foreground/70">Greenfield implementations or lift-and-shift migrations.</span>
               </p>
               <p className="text-sm mt-1">
-                <span className="font-semibold text-foreground">We do:</span>{" "}
-                <span className="text-muted-foreground">Rehabilitate and modernize existing ServiceNow instances.</span>
+                <span className="font-semibold text-primary-foreground">We do:</span>{" "}
+                <span className="text-primary-foreground/70">Rehabilitate and modernize existing ServiceNow instances.</span>
               </p>
             </div>
           </Reveal>
