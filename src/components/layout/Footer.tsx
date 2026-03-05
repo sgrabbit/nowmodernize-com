@@ -13,7 +13,8 @@ const SERVICES_LINKS = [
 
 const COMPANY_LINKS = [
   { to: "/about", label: "About" },
-  { to: "/resources", label: "Resources" },
+  { to: "/knowledge-base", label: "Knowledge Base" },
+  { to: "/case-studies", label: "Case Studies" },
   { to: "/contact", label: "Contact" },
 ] as const;
 

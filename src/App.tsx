@@ -8,7 +8,9 @@ import { LazyMotion, domAnimation } from "framer-motion";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
-import Resources from "./pages/Resources";
+import KnowledgeBase from "./pages/KnowledgeBase";
+import CaseStudies from "./pages/CaseStudies";
+import CaseStudyPost from "./pages/CaseStudyPost";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import About from "./pages/About";
@@ -37,7 +39,9 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/services" element={<Services />} />
-            <Route path="/resources" element={<Resources />} />
+            <Route path="/knowledge-base" element={<KnowledgeBase />} />
+            <Route path="/case-studies" element={<CaseStudies />} />
+            <Route path="/case-studies/:slug" element={<CaseStudyPost />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/about" element={<About />} />

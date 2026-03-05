@@ -130,7 +130,7 @@ export default function About() {
                 <Link to="/contact">Get a Free Health Check</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <Link to="/resources">View Resources</Link>
+                <Link to="/knowledge-base">View Knowledge Base</Link>
               </Button>
             </div>
           </Reveal>

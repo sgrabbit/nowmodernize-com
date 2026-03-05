@@ -68,6 +68,65 @@ export interface Author {
   bio?: string;
 }
 
+// Case Study types
+export interface CaseStudyQuote {
+  text: string;
+  attribution?: string;
+}
+
+export interface CaseStudy {
+  _id: string;
+  _createdAt: string;
+  title: string;
+  slug: {
+    current: string;
+  };
+  publishedAt: string;
+  excerpt?: string;
+  clientName: string;
+  industry: string;
+  services?: string[];
+  featuredImage?: {
+    asset: {
+      _ref: string;
+      _type: string;
+    };
+    alt?: string;
+  };
+  featuredQuote?: CaseStudyQuote;
+  keyHighlights?: string[];
+  clientLoves?: string[];
+  aboutCompany?: (PortableTextBlock | PortableTextImage)[];
+  challenge?: (PortableTextBlock | PortableTextImage)[];
+  solution?: (PortableTextBlock | PortableTextImage)[];
+  results?: (PortableTextBlock | PortableTextImage)[];
+  bottomLine?: (PortableTextBlock | PortableTextImage)[];
+  closingQuote?: CaseStudyQuote;
+  tags?: string[];
+}
+
+// Knowledge Base item type definition
+export interface KnowledgeBaseItem {
+  _id: string;
+  active: boolean;
+  title: string;
+  slug: {
+    current: string;
+  };
+  oneLiner: string;
+  whatYouGet?: string[];
+  whatsInside?: string[];
+  resourceUrl: string;
+  resourceFile?: {
+    asset: {
+      _ref: string;
+      _type: string;
+      url?: string;
+    };
+  };
+  tags?: string[];
+}
+
 // Post type definition
 export interface Post {
   _id: string;

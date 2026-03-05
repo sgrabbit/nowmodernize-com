@@ -8,7 +8,7 @@ const sanityClient = createClient({
   useCdn: false, // Don't use CDN for sitemap generation
 });
 
-interface Post {
+interface SanityDocument {
   slug: { current: string };
   publishedAt: string;
   _updatedAt: string;
@@ -19,22 +19,26 @@ export default async function handler(
   res: VercelResponse
 ) {
   try {
-    // Fetch all published posts from Sanity
-    const posts: Post[] = await sanityClient.fetch(`
-      *[_type == "post"] | order(publishedAt desc) {
-        slug,
-        publishedAt,
-        _updatedAt
-      }
-    `);
+    const [posts, caseStudies]: [SanityDocument[], SanityDocument[]] = await Promise.all([
+      sanityClient.fetch(`
+        *[_type == "post"] | order(publishedAt desc) {
+          slug, publishedAt, _updatedAt
+        }
+      `),
+      sanityClient.fetch(`
+        *[_type == "caseStudy"] | order(publishedAt desc) {
+          slug, publishedAt, _updatedAt
+        }
+      `),
+    ]);
 
     const baseUrl = 'https://nowmodernize.com';
 
-    // Static pages
     const staticPages = [
       { url: '/', priority: 1.0, changefreq: 'weekly' },
       { url: '/services', priority: 0.9, changefreq: 'monthly' },
-      { url: '/resources', priority: 0.9, changefreq: 'weekly' },
+      { url: '/knowledge-base', priority: 0.9, changefreq: 'weekly' },
+      { url: '/case-studies', priority: 0.9, changefreq: 'weekly' },
       { url: '/blog', priority: 0.9, changefreq: 'daily' },
       { url: '/about', priority: 0.8, changefreq: 'monthly' },
       { url: '/contact', priority: 0.8, changefreq: 'monthly' },
@@ -42,7 +46,6 @@ export default async function handler(
       { url: '/terms', priority: 0.3, changefreq: 'yearly' },
     ];
 
-    // Generate XML sitemap
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
@@ -63,6 +66,16 @@ ${posts
     (post) => `  <url>
     <loc>${baseUrl}/blog/${post.slug.current}</loc>
     <lastmod>${new Date(post._updatedAt || post.publishedAt).toISOString()}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>`
+  )
+  .join('\n')}
+${caseStudies
+  .map(
+    (study) => `  <url>
+    <loc>${baseUrl}/case-studies/${study.slug.current}</loc>
+    <lastmod>${new Date(study._updatedAt || study.publishedAt).toISOString()}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>`

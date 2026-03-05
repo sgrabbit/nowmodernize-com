@@ -150,7 +150,7 @@ export default function Services() {
                 <Link to="/contact">Get a Free Health Check</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <Link to="/resources">View Resources</Link>
+                <Link to="/knowledge-base">View Knowledge Base</Link>
               </Button>
             </div>
             <div className="bg-accent/70 rounded-lg p-4 border border-border/50">
