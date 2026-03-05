@@ -75,27 +75,38 @@ export default function Contact() {
 
   return (
     <Layout>
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container">
+      {/* Hero */}
+      <section className="relative py-16 md:py-24 hero-gradient overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/contact-bg.jpg"
+            alt=""
+            loading="eager"
+            fetchPriority="high"
+            className="w-full h-full object-cover opacity-30 brightness-90"
+          />
+        </div>
+
+        <div className="container relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-16">
             {/* Left Column - Copy */}
             <Reveal trigger="mount">
-              <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+              <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
                 Get a Free Health Check
               </h1>
-              <p className="text-muted-foreground text-lg mb-8">
+              <p className="text-primary-foreground/80 text-lg mb-8">
                 Expect your scorecard in 7–10 business days after access + interviews.
               </p>
 
               <div className="space-y-8">
                 <div>
-                  <h2 className="font-heading font-semibold text-foreground mb-4">
+                  <h2 className="font-heading font-semibold text-primary-foreground mb-4">
                     What you get:
                   </h2>
                   <ul className="space-y-3">
                     {whatYouGet.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3 text-muted-foreground">
-                        <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                      <li key={i} className="flex items-start gap-3 text-primary-foreground/80">
+                        <CheckCircle2 className="w-5 h-5 text-teal-light flex-shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -103,20 +114,20 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <h2 className="font-heading font-semibold text-foreground mb-4">
+                  <h2 className="font-heading font-semibold text-primary-foreground mb-4">
                     What we need:
                   </h2>
                   <ul className="space-y-3">
                     {whatWeNeed.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3 text-muted-foreground">
-                        <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                      <li key={i} className="flex items-start gap-3 text-primary-foreground/80">
+                        <CheckCircle2 className="w-5 h-5 text-teal-light flex-shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <p className="text-sm text-muted-foreground border-l-2 border-primary pl-4">
+                <p className="text-sm text-primary-foreground/70 border-l-2 border-teal-light/50 pl-4">
                   We don't do greenfield implementations or lift-and-shift migrations—we modernize existing ServiceNow instances.
                 </p>
               </div>
