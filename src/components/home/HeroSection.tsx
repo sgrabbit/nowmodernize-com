@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getSectionTheme } from "@/lib/section-theme";
+import { Reveal } from "@/components/motion";
 import heroBg from "@/assets/hero-bg.png";
 
 const valueBullets = [
@@ -31,57 +31,43 @@ export function HeroSection() {
 
       <div className="container relative z-10 py-20 md:py-24">
         <div className="max-w-3xl">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className={`${theme.heading} font-heading font-bold text-primary-foreground leading-tight mb-6`}
-          >
-            <span className="sm:whitespace-nowrap">Modernize ServiceNow</span>
-            <br /><span className="text-base sm:text-lg md:text-xl lg:text-2xl">for Mid-Tier SaaS</span>
-            <br /><span className="text-teal-light text-xl sm:text-2xl md:text-3xl lg:text-4xl">Unlock AI Automation</span>
-          </motion.h1>
+          <Reveal trigger="mount" duration={0.6}>
+            <h1 className={`${theme.heading} font-heading font-bold text-primary-foreground leading-tight mb-6`}>
+              <span className="sm:whitespace-nowrap">Modernize ServiceNow</span>
+              <br /><span className="text-base sm:text-lg md:text-xl lg:text-2xl">for Mid-Tier SaaS</span>
+              <br /><span className="text-teal-light text-xl sm:text-2xl md:text-3xl lg:text-4xl">Unlock AI Automation</span>
+            </h1>
+          </Reveal>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className={`${theme.subheading} text-primary-foreground/80 font-bold uppercase mt-10 mb-8 leading-tight flex items-center gap-6`}
-          >
-            <span>Modernize</span>
-            <span className="text-primary-foreground/40">|</span>
-            <span>Upgrade</span>
-            <span className="text-primary-foreground/40">|</span>
-            <span>Run</span>
-            {/* Reduce incidents by fixing brittle customizations and CMDB/integration issues, so your platform becomes stable now and truly AI-ready next. */}
-          </motion.p>
+          <Reveal trigger="mount" duration={0.6} delay={0.1}>
+            <p className={`${theme.subheading} text-primary-foreground/80 font-bold uppercase mt-10 mb-8 leading-tight flex items-center gap-6`}>
+              <span>Modernize</span>
+              <span className="text-primary-foreground/40">|</span>
+              <span>Upgrade</span>
+              <span className="text-primary-foreground/40">|</span>
+              <span>Run</span>
+            </p>
+          </Reveal>
 
-          <motion.ul
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-3 mb-10"
-          >
-            {valueBullets.map((bullet, index) => (
-              <li key={index} className="flex items-start gap-3 text-primary-foreground/90">
-                <CheckCircle2 className="w-5 h-5 text-teal-light flex-shrink-0 mt-0.5" />
-                <span className={theme.bodyText}>{bullet}</span>
-              </li>
-            ))}
-          </motion.ul>
+          <Reveal trigger="mount" duration={0.6} delay={0.2}>
+            <ul className="space-y-3 mb-10">
+              {valueBullets.map((bullet, index) => (
+                <li key={index} className="flex items-start gap-3 text-primary-foreground/90">
+                  <CheckCircle2 className="w-5 h-5 text-teal-light flex-shrink-0 mt-0.5" />
+                  <span className={theme.bodyText}>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
+          <Reveal trigger="mount" duration={0.6} delay={0.3}>
             <Button variant="nav-cta" size="xl" asChild className="group">
               <Link to="/contact">
                 Get a Free Health Check
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
-          </motion.div>
+          </Reveal>
         </div>
       </div>
 

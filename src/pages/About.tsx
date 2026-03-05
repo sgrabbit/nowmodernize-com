@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
+
 import { ArrowRight, CheckCircle2, Users, Target, Cpu, MessageSquare, ClipboardCheck, Map, ShieldCheck, TrendingDown, Sparkles, UserPlus, XCircle, PackageX, UserX } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Reveal, staggerContainer, fadeUp } from "@/components/motion";
 
 const missionHighlights= {
   "Stable operations": "fewer repeat incidents and less firefighting",
@@ -114,12 +116,7 @@ export default function About() {
       {/* Hero */}
       <section className="py-16 md:py-24 bg-secondary/30">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-4xl"
-          >
+          <Reveal trigger="mount" className="max-w-4xl">
             <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6">
               We modernize ServiceNow
               <br /> for high growth SaaS teams
@@ -136,7 +133,7 @@ export default function About() {
                 <Link to="/resources">View Resources</Link>
               </Button>
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
@@ -144,12 +141,7 @@ export default function About() {
       <section className="py-16 md:py-20 bg-secondary/70">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
+            <Reveal>
               <span className="uppercase tracking-wider text-teal-light text-muted-foreground font-medium mb-3 block">
                 Where We Come From
               </span>
@@ -159,15 +151,9 @@ export default function About() {
               <p className="text-muted-foreground text-lg leading-relaxed">
                 We're a product and services firm built by engineers who ship enterprise grade systems. We've delivered projects with a global talent pool across platform engineering, automation, and AI workflows. One pattern kept showing up: most ServiceNow environments can't scale upgrades or automation until the foundation is modernized.
               </p>
-            </motion.div>
+            </Reveal>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="space-y-4"
-            >
+            <Reveal delay={0.1} className="space-y-4">
               {proofCards.map((card, index) => (
                 <div key={index} className="bg-card rounded-xl p-6 border border-border/50">
                   <div className="flex items-center gap-4">
@@ -181,7 +167,7 @@ export default function About() {
                   </div>
                 </div>
               ))}
-            </motion.div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -190,12 +176,7 @@ export default function About() {
       <section className="py-16 md:py-20 bg-background">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
+            <Reveal>
               <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-4">
                 Our Mission
               </h2>
@@ -212,14 +193,9 @@ export default function About() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </Reveal>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
+            <Reveal delay={0.1}>
               <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-4">
                 Who We Serve
               </h2>
@@ -236,7 +212,7 @@ export default function About() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -245,13 +221,7 @@ export default function About() {
       {/* How We Earn Trust */}
       <section className="py-16 md:py-20 bg-secondary/70">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
+          <Reveal className="text-center mb-12">
             <span className="uppercase tracking-wider text-teal-light text-muted-foreground font-medium mb-3 block">
               How We Earn Trust
             </span>
@@ -261,16 +231,19 @@ export default function About() {
             <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
               We work best with teams that want clarity, discipline, and low-risk change. Here’s how we operate.
             </p>
-          </motion.div>
+          </Reveal>
 
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+          <m.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="grid md:grid-cols-3 gap-6 md:gap-8"
+          >
             {trustDifferentiators.map((item, index) => (
-              <motion.div
+              <m.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                variants={fadeUp}
                 className="bg-card rounded-xl p-6 md:p-8 border border-border/50 hover:border-primary/20 transition-colors duration-300"
               >
                 <div className="w-14 h-14 rounded-xl bg-accent flex items-center justify-center mb-5">
@@ -282,21 +255,15 @@ export default function About() {
                 <p className="text-base text-muted-foreground leading-relaxed">
                   {item.description}
                 </p>
-              </motion.div>
+              </m.div>
             ))}
-          </div>
+          </m.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-12 text-center"
-          >
+          <Reveal delay={0.4} className="mt-12 text-center">
             <p className="text-lg font-heading font-semibold text-foreground">
               Start small. Prove value. Earn the long term.
             </p>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
@@ -322,13 +289,7 @@ export default function About() {
         </div>
 
         <div className="container relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
+          <Reveal className="text-center mb-12">
             <span className="uppercase tracking-wider text-teal-light text-primary-foreground/90 font-medium mb-3 block">
               How We Work
             </span>
@@ -338,16 +299,19 @@ export default function About() {
             <p className="text-lg text-primary-foreground/80 max-w-3xl mx-auto">
               A simple engagement model designed for critical platforms—start read-only, align on evidence, then execute in controlled stages.
             </p>
-          </motion.div>
+          </Reveal>
 
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-12">
+          <m.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="grid md:grid-cols-3 gap-6 md:gap-8 mb-12"
+          >
             {howWeWorkSteps.map((step, index) => (
-              <motion.div
+              <m.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                variants={fadeUp}
                 className="relative"
               >
                 <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 h-full">
@@ -369,17 +333,11 @@ export default function About() {
                     <ArrowRight className="w-6 h-6 text-border" />
                   </div>
                 )}
-              </motion.div>
+              </m.div>
             ))}
-          </div>
+          </m.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-center"
-          >
+          <Reveal delay={0.4} className="text-center">
             <Button variant="hero" size="lg" asChild className="group mb-4">
               <Link to="/contact">
                 Get a Free Health Check
@@ -389,7 +347,7 @@ export default function About() {
             <p className="text-sm text-primary-foreground/60 mt-4">
               No long sales cycle. We start with an assessment and earn the execution.
             </p>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
@@ -456,13 +414,7 @@ export default function About() {
       {/* What We Do / Don't Do */}
       <section className="py-16 md:py-20 ">
         <div className="container">
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
+        <Reveal className="text-center mb-12">
             <span className="uppercase tracking-wider text-teal-light text-muted-foreground font-medium mb-3 block">
               Scope
             </span>
@@ -472,15 +424,9 @@ export default function About() {
             <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
               We work best with teams that want clarity, discipline, and low-risk change. Here’s how we operate.
             </p>
-          </motion.div>
+          </Reveal>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="bg-card rounded-xl p-6 md:p-8 border border-border/50"
-            >
+            <Reveal className="bg-card rounded-xl p-6 md:p-8 border border-border/50">
               <h3 className="font-heading text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
                 <CheckCircle2 className="w-6 h-6 text-primary" />
                 What we do
@@ -494,15 +440,9 @@ export default function About() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </Reveal>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-card rounded-xl p-6 md:p-8 border border-border/50"
-            >
+            <Reveal delay={0.1} className="bg-card rounded-xl p-6 md:p-8 border border-border/50">
               <h3 className="font-heading text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
                 <XCircle className="w-6 h-6 text-destructive" />
                 What we don't do
@@ -516,7 +456,7 @@ export default function About() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -524,12 +464,7 @@ export default function About() {
       {/* CTA */}
       <section className="py-16 md:py-20 hero-gradient">
         <div className="container text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
+          <Reveal>
             <h2 className="font-heading text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
               Start with a Free Health Check
             </h2>
@@ -542,7 +477,7 @@ export default function About() {
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
     </Layout>

@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { AlertTriangle, RefreshCcw, Database } from "lucide-react";
 import { getSectionTheme } from "@/lib/section-theme";
+import { Reveal, staggerContainer, fadeUp } from "@/components/motion";
 
 const problems = [
   {
@@ -26,13 +27,7 @@ export function ProblemSection() {
   return (
     <section className={`${theme.padding} ${theme.background}`}>
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
+        <Reveal className="text-center mb-12">
           <span className={`${theme.label} uppercase tracking-wider text-teal-light text-muted-foreground font-medium mb-3 block`}>
             The Pain 
           </span>
@@ -43,16 +38,19 @@ export function ProblemSection() {
           <p className={`${theme.subheading} text-muted-foreground ${theme.subheadingWidth}`}>
           In high-growth SaaS, drift shows up as repeat incidents, slowdowns, and upgrade paralysis. The root cause is usually the same: brittle customization, unmanaged dependencies, and weak governance.
           </p>
-        </motion.div>
+        </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+        <m.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="grid md:grid-cols-3 gap-6 md:gap-8"
+        >
           {problems.map((problem, index) => (
-            <motion.div
+            <m.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              variants={fadeUp}
               className="bg-card rounded-xl p-6 md:p-8 shadow-card border border-border/50 hover:shadow-lg transition-shadow duration-300"
             >
               <div className="w-12 h-12 rounded-lg bg-accent flex items-center justify-center mb-5">
@@ -64,21 +62,15 @@ export function ProblemSection() {
               <p className={`${theme.cardDescription} text-muted-foreground leading-relaxed`}>
                 {problem.description}
               </p>
-            </motion.div>
+            </m.div>
           ))}
-        </div>
+        </m.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-12 text-center"
-        >
+        <Reveal delay={0.4} className="mt-12 text-center">
           <p className={`${theme.bodyText} font-heading font-semibold text-foreground`}>
-            When teams say “we’re scared to touch it,” the platform has drifted into a blocker.
+            When teams say "we're scared to touch it," the platform has drifted into a blocker.
           </p>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

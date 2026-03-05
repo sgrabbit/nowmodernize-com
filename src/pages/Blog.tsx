@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { Reveal } from "@/components/motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { SEO, BreadcrumbStructuredData } from "@/components/SEO";
@@ -58,13 +58,7 @@ function BlogCard({ post, index }: { post: Post; index: number }) {
   const readingTime = post.readingTime || calculateReadingTime(post.body);
   
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group"
-    >
+    <Reveal delay={index * 0.1} className="group">
       <Link to={`/blog/${post.slug.current}`} className="block">
         {post.image && (
           <div className="aspect-[16/10] w-full overflow-hidden mb-6">
@@ -102,7 +96,7 @@ function BlogCard({ post, index }: { post: Post; index: number }) {
           )}
         </div>
       </Link>
-    </motion.article>
+    </Reveal>
   );
 }
 
@@ -133,19 +127,14 @@ export default function Blog() {
       {/* Hero */}
       <section className="py-16 md:py-24 border-b border-border/30">
         <div className="container px-6 md:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-[1100px] mx-auto"
-          >
+          <Reveal trigger="mount" className="max-w-[1100px] mx-auto">
             <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl font-bold text-foreground mb-6 tracking-tight">
               Blog
             </h1>
             <p className="text-muted-foreground text-xl md:text-2xl leading-relaxed max-w-3xl">
               Insights, strategies, and practical guidance for modernizing ServiceNow and achieving AI readiness.
             </p>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
@@ -185,13 +174,7 @@ export default function Blog() {
       {/* Bottom CTA */}
       <section className="py-16 md:py-20 border-t border-border/30 bg-background">
         <div className="container px-6 md:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="max-w-[680px] mx-auto text-center"
-          >
+          <Reveal className="max-w-[680px] mx-auto text-center">
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">
               Ready to modernize your ServiceNow instance?
             </h2>
@@ -203,7 +186,7 @@ export default function Blog() {
                 Get a Free Health Check
               </Link>
             </Button>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
     </Layout>

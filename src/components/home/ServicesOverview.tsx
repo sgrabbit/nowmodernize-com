@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ArrowRight, Zap, RefreshCcw, Headphones, Bot, Users, XCircle, CheckCircle } from "lucide-react";
 import { getSectionTheme } from "@/lib/section-theme";
+import { Reveal, staggerContainer, fadeUp } from "@/components/motion";
 
 const services = [
   {
@@ -50,15 +51,12 @@ const services = [
   },
 ];
 
-function ServiceCard({ service, index, className }: { service: typeof services[0]; index: number; className?: string }) {
+function ServiceCard({ service, className }: { service: typeof services[0]; className?: string }) {
   const theme = getSectionTheme("services");
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
+    <m.div
+      variants={fadeUp}
       className={`group relative ${className || ''}`}
     >
       <a href={service.link} className="block h-full">
@@ -95,27 +93,20 @@ function ServiceCard({ service, index, className }: { service: typeof services[0
           </span>
         </div>
       </a>
-    </motion.div>
+    </m.div>
   );
 }
 
 export function ServicesOverview() {
   const theme = getSectionTheme("services");
   
-  // Split: first 3 in top row, last 2 in bottom row
   const topRow = services.slice(0, 3);
   const bottomRow = services.slice(3);
 
   return (
     <section className={`${theme.padding} ${theme.background}`}>
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-14"
-        >
+        <Reveal className="text-center mb-14">
           <span className={`${theme.label} uppercase tracking-wider text-teal-light text-muted-foreground font-medium mb-3 block`}>
             The Offerings 
           </span>
@@ -125,30 +116,36 @@ export function ServicesOverview() {
           <p className={`${theme.subheading} text-muted-foreground ${theme.subheadingWidth}`}>
             Every service is designed for technology companies running ServiceNow.
           </p>
-        </motion.div>
+        </Reveal>
 
         {/* Top row: 3 cards */}
-        <div className="grid md:grid-cols-3 gap-5 md:gap-6 mb-5 md:mb-6">
+        <m.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="grid md:grid-cols-3 gap-5 md:gap-6 mb-5 md:mb-6"
+        >
           {topRow.map((service, index) => (
-            <ServiceCard key={index} service={service} index={index} />
+            <ServiceCard key={index} service={service} />
           ))}
-        </div>
+        </m.div>
 
         {/* Bottom row: 2 cards, centered and wider */}
-        <div className="grid md:grid-cols-2 gap-5 md:gap-6 max-w-4xl mx-auto">
+        <m.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="grid md:grid-cols-2 gap-5 md:gap-6 max-w-4xl mx-auto"
+        >
           {bottomRow.map((service, index) => (
-            <ServiceCard key={index + 3} service={service} index={index + 3} />
+            <ServiceCard key={index + 3} service={service} />
           ))}
-        </div>
+        </m.div>
 
         {/* We do / We don't do */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-12 max-w-4xl mx-auto"
-        >
+        <Reveal delay={0.5} className="mt-12 max-w-4xl mx-auto">
           <div className="relative bg-gradient-to-br from-card via-card to-accent/10 rounded-2xl p-6 md:p-8 border border-border/40 overflow-hidden">
             <div className="relative flex flex-col md:flex-row md:items-center gap-4 md:gap-0">
               {/* Do */}
@@ -178,7 +175,7 @@ export function ServicesOverview() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

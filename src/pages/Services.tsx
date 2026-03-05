@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { ArrowRight, Zap, RefreshCcw, Headphones, Bot, Users, CheckCircle2 } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/motion";
 
 const services = [
   {
@@ -32,7 +32,7 @@ const services = [
     id: "upgrade-posture-management",
     icon: RefreshCcw,
     title: "Upgrade Posture Management",
-    outcome: "Make upgrades predictable and low-risk—no more \"big bang\" upgrade fear.",
+    outcome: "Make upgrades predictable and low-risk, no more \"big bang\" upgrade fear.",
     includes: [
       "Automated impact analysis on: ATF coverage gaps, customizations, integrations, UI changes, deprecated APIs/usages",
       "Testing protocol: ATF strategy, smoke suites by module, integration test checkpoints, rollback plans",
@@ -54,7 +54,7 @@ const services = [
     id: "ams",
     icon: Headphones,
     title: "Application Management (AMS)",
-    outcome: "Keep the platform healthy post-modernization with continuous improvement—not just ticket closure.",
+    outcome: "Keep the platform healthy post-modernization with continuous improvement, not just ticket closure.",
     includes: [
       "L2/L3 engineering support with root-cause discipline (not patch-and-close)",
       "Backlog burn-down: recurring incident elimination, workflow standardization, integration hardening",
@@ -138,17 +138,12 @@ export default function Services() {
       {/* Hero */}
       <section className="py-16 md:py-24 bg-secondary/30">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl"
-          >
+          <Reveal trigger="mount" className="max-w-3xl">
             <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
               Services
             </h1>
             <p className="text-muted-foreground text-lg md:text-xl mb-6">
-              Modernization-first ServiceNow services for mid-tier B2B SaaS—reduce repeat incidents now, become AI-ready next.
+              Modernization-first ServiceNow services for mid-tier B2B SaaS, reduce repeat incidents now, become AI-ready next.
             </p>
             <div className="flex flex-wrap gap-4 mb-8">
               <Button variant="default" size="lg" asChild>
@@ -168,7 +163,7 @@ export default function Services() {
                 <span className="text-muted-foreground">Rehabilitate and modernize existing ServiceNow instances.</span>
               </p>
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
@@ -193,13 +188,9 @@ export default function Services() {
       <section className="py-16 md:py-20 bg-background border-t border-b border-border">
         <div className="container space-y-20">
           {services.map((service, index) => (
-            <motion.div
+            <Reveal
               key={service.id}
               id={service.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
               className="scroll-mt-[200px] border border-border rounded-xl p-8 bg-card"
             >
               <div className="flex items-start gap-4 mb-6">
@@ -267,7 +258,7 @@ export default function Services() {
                   </Button>
                 </div>
               )}
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -275,12 +266,7 @@ export default function Services() {
       {/* Final CTA */}
       <section className="py-16 md:py-20 hero-gradient">
         <div className="container text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
+          <Reveal>
             <h2 className="font-heading text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
               Ready to reduce repeat incidents and de-risk change?
             </h2>
@@ -293,7 +279,7 @@ export default function Services() {
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
     </Layout>

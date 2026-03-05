@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { Reveal } from "@/components/motion";
 import { Layout } from "@/components/layout/Layout";
 
 export default function Terms() {
@@ -6,12 +6,7 @@ export default function Terms() {
     <Layout>
       <section className="py-16 md:py-24 bg-background">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl mx-auto"
-          >
+          <Reveal trigger="mount" className="max-w-3xl mx-auto">
             <h1 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-8">
               Terms of Use
             </h1>
@@ -97,7 +92,7 @@ export default function Terms() {
                 Questions about these Terms: legal@nowmodernize.com
               </p>
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
     </Layout>

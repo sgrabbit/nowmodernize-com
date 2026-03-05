@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { Reveal } from "@/components/motion";
 import { CheckCircle2, Calendar } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 
@@ -7,12 +7,7 @@ export default function ThankYou() {
     <Layout>
       <section className="py-16 md:py-24 bg-background min-h-[70vh] flex items-center">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-2xl mx-auto text-center"
-          >
+          <Reveal trigger="mount" className="max-w-2xl mx-auto text-center">
             <div className="w-20 h-20 rounded-full bg-accent flex items-center justify-center mx-auto mb-6">
               <CheckCircle2 className="w-10 h-10 text-primary" />
             </div>
@@ -43,7 +38,7 @@ export default function ThankYou() {
             <p className="text-sm text-muted-foreground mt-8">
               We'll reach out via email within 2 business day to confirm next steps.
             </p>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
     </Layout>

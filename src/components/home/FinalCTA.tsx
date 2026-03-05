@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ArrowRight, MessageSquare, ClipboardCheck, Map } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getSectionTheme } from "@/lib/section-theme";
+import { Reveal, staggerContainer, fadeUp } from "@/components/motion";
 
 const steps = [
   {
@@ -50,13 +51,7 @@ export function FinalCTA() {
       </div>
 
       <div className="container relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
+        <Reveal className="text-center mb-12">
           <span className={`${theme.label} uppercase tracking-wider text-teal-light text-primary-foreground/90 font-medium mb-3 block`}>
             Get Started
           </span>
@@ -67,16 +62,19 @@ export function FinalCTA() {
           <p className={`${theme.subheading} text-primary-foreground/80 ${theme.subheadingWidth}`}>
             In one call, we'll understand what's driving repeat incidents and change risk. Then we'll map the fastest path to a stable, AI ready ServiceNow.
           </p>
-        </motion.div>
+        </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-12">
+        <m.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="grid md:grid-cols-3 gap-6 md:gap-8 mb-12"
+        >
           {steps.map((step, index) => (
-            <motion.div
+            <m.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              variants={fadeUp}
               className="relative"
             >
               <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 h-full">
@@ -98,17 +96,11 @@ export function FinalCTA() {
                   <ArrowRight className="w-6 h-6 text-border" />
                 </div>
               )}
-            </motion.div>
+            </m.div>
           ))}
-        </div>
+        </m.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center"
-        >
+        <Reveal delay={0.4} className="text-center">
           <Button variant="hero" size="xl" asChild className="group mb-4">
             <Link to="/contact">
               Get a Free Health Check
@@ -118,7 +110,7 @@ export function FinalCTA() {
           <p className={`${theme.smallText} text-primary-foreground/60 mt-4`}>
             No long sales cycle. We start with an assessment and earn the execution.
           </p>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

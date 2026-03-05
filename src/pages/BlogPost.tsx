@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams, Link, Navigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { Reveal } from "@/components/motion";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -353,12 +353,7 @@ export default function BlogPost() {
         {/* Title & Meta Section */}
         <section className="py-12 md:py-16 bg-background">
           <div className="container px-6 md:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="max-w-[680px] mx-auto"
-            >
+            <Reveal trigger="mount" className="max-w-[680px] mx-auto">
               {/* Title */}
               <h1 className="font-heading text-[40px] sm:text-[48px] md:text-[56px] leading-[1.15] font-bold text-foreground mb-6 tracking-tight">
                 {post.title}
@@ -407,38 +402,27 @@ export default function BlogPost() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </Reveal>
           </div>
         </section>
 
         {/* Hero Image */}
         {post.image && (
           <section className="w-full mb-12 md:mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="w-full"
-            >
+            <Reveal trigger="mount" delay={0.2} className="w-full">
               <img
                 src={urlFor(post.image).width(1600).quality(90).url()}
                 alt={post.title}
                 className="w-full"
               />
-            </motion.div>
+            </Reveal>
           </section>
         )}
 
         {/* Body Content */}
         <section className="pb-16 md:pb-20 bg-background">
           <div className="container px-6 md:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="max-w-[680px] mx-auto"
-            >
+            <Reveal className="max-w-[680px] mx-auto">
               {post.body && (
                 <PortableText value={post.body} />
               )}
@@ -458,20 +442,14 @@ export default function BlogPost() {
                   </div>
                 </div>
               )}
-            </motion.div>
+            </Reveal>
           </div>
         </section>
 
         {/* Bottom CTA */}
         <section className="py-16 md:py-20 border-t border-border/30 bg-background">
           <div className="container px-6 md:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="max-w-[680px] mx-auto text-center"
-            >
+            <Reveal className="max-w-[680px] mx-auto text-center">
               <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">
                 Ready to modernize your ServiceNow instance?
               </h2>
@@ -481,7 +459,7 @@ export default function BlogPost() {
               <Button variant="default" size="lg" asChild className="px-8">
                 <Link to="/contact">Get a Free Health Check</Link>
               </Button>
-            </motion.div>
+            </Reveal>
           </div>
         </section>
       </article>

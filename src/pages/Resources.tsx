@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { Reveal } from "@/components/motion";
 import { ArrowRight, Download, Mail, CheckCircle2, AlertCircle } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -166,13 +166,7 @@ function ResourceCard({ resource, index }: { resource: typeof resources[0]; inde
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-card rounded-xl border border-border/50 overflow-hidden"
-    >
+    <Reveal delay={index * 0.1} className="bg-card rounded-xl border border-border/50 overflow-hidden">
       <div className="p-6 md:p-8">
         <h3 className="font-heading text-xl font-semibold text-foreground mb-2">
           {resource.title}
@@ -247,7 +241,7 @@ function ResourceCard({ resource, index }: { resource: typeof resources[0]; inde
           </div>
         )}
       </div>
-    </motion.div>
+    </Reveal>
   );
 }
 
@@ -257,19 +251,14 @@ export default function Resources() {
       {/* Hero */}
       <section className="py-16 md:py-24 bg-secondary/30">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl"
-          >
+          <Reveal trigger="mount" className="max-w-3xl">
             <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
               Resources
             </h1>
             <p className="text-muted-foreground text-lg md:text-xl">
               Practical guides for mid-tier B2B SaaS teams modernizing ServiceNow to become AI-ready (stable platform + standard processes + reliable data).
             </p>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
@@ -285,13 +274,7 @@ export default function Resources() {
       {/* Bottom CTA */}
       <section className="py-16 md:py-20 bg-secondary/50">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="bg-card rounded-xl p-8 md:p-12 border border-border/50 text-center max-w-3xl mx-auto"
-          >
+          <Reveal className="bg-card rounded-xl p-8 md:p-12 border border-border/50 text-center max-w-3xl mx-auto">
             <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-4">
               Want a scorecard for your instance?
             </h2>
@@ -304,7 +287,7 @@ export default function Resources() {
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
     </Layout>

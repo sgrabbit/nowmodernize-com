@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Target, Users, Cpu } from "lucide-react";
 import { getSectionTheme } from "@/lib/section-theme";
+import { Reveal, staggerContainer, fadeUp } from "@/components/motion";
 
 const differentiators = [
   {
@@ -27,13 +28,7 @@ export function WhyUs() {
   return (
     <section className={`${theme.padding} ${theme.background}`}>
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
+        <Reveal className="text-center mb-12">
           <span className={`${theme.label} uppercase tracking-wider text-teal-light text-muted-foreground font-medium mb-3 block`}>
             Why NowModernize
           </span>
@@ -43,16 +38,19 @@ export function WhyUs() {
           <p className={`${theme.subheading} text-muted-foreground ${theme.subheadingWidth}`}>
             Not generalists. Built for SaaS teams that need reliability now and AI readiness next.
           </p>
-        </motion.div>
+        </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+        <m.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          className="grid md:grid-cols-3 gap-6 md:gap-8"
+        >
           {differentiators.map((item, index) => (
-            <motion.div
+            <m.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              variants={fadeUp}
               className="bg-card rounded-xl p-6 md:p-8 border border-border/50 hover:border-primary/20 transition-colors duration-300"
             >
               <div className="w-14 h-14 rounded-xl bg-accent flex items-center justify-center mb-5">
@@ -64,20 +62,14 @@ export function WhyUs() {
               <p className={`${theme.cardDescription} text-muted-foreground leading-relaxed`}>
                 {item.description}
               </p>
-            </motion.div>
+            </m.div>
           ))}
-        </div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-12 text-center"
-        >
+        </m.div>
+        <Reveal delay={0.4} className="mt-12 text-center">
           <p className={`${theme.bodyText} font-heading font-semibold text-foreground`}>
             Start small. Prove value. Earn the long term.
           </p>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { Reveal } from "@/components/motion";
 import { CheckCircle2, AlertCircle } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -79,11 +79,7 @@ export default function Contact() {
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 md:gap-16">
             {/* Left Column - Copy */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
+            <Reveal trigger="mount">
               <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
                 Get a Free Health Check
               </h1>
@@ -124,14 +120,10 @@ export default function Contact() {
                   We don't do greenfield implementations or lift-and-shift migrations—we modernize existing ServiceNow instances.
                 </p>
               </div>
-            </motion.div>
+            </Reveal>
 
             {/* Right Column - Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
+            <Reveal trigger="mount" delay={0.1}>
               <div className="bg-card rounded-xl p-6 md:p-8 border border-border/50 shadow-card">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Error Alert */}
@@ -231,7 +223,7 @@ export default function Contact() {
                   </p>
                 </form>
               </div>
-            </motion.div>
+            </Reveal>
           </div>
         </div>
       </section>

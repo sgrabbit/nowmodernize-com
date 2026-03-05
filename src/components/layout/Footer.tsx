@@ -8,6 +8,7 @@ const SERVICES_LINKS = [
   { href: "/services#posture-management", label: "Upgrade Posture Management" },
   { href: "/services#ams", label: "Application Management (AMS)" },
   { href: "/services#ai-automation", label: "AI & Automation Readiness" },
+  { href: "/services#managed-delivery-capacity", label: "Managed Delivery Capacity" },
 ] as const;
 
 const COMPANY_LINKS = [
