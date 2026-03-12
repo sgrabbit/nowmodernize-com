@@ -6,22 +6,22 @@ import { Reveal, staggerContainer, fadeUp } from "@/components/motion";
 const services = [
   {
     icon: Zap,
-    tag: "Technical Debt Elimination",
-    title: "ServiceNow Modernization",
-    pain: "Reduce repeat incidents and change risk by removing brittle customizations.",
-    body: "Transform your over-customized instance into a strategic asset. We eliminate technical debt by reducing risky customizations and simplifying workflows.",
+    tag: "Upgrade Safety",
+    title: "Modernization + Upgrade Readiness",
+    pain: "Reduce repeat incidents and change risk by removing upgrade blockers.",
+    body: "Transform your over-customized instance into a stable foundation. We reduce brittle customizations, simplify workflows, and harden integrations to make upgrades predictable.",
     link: "/services#modernization",
     linkText: "See how we modernize",
   },
-  {
-    icon: RefreshCcw,
-    tag: "Make Upgrades Boring Again",
-    title: "Upgrade Posture Management",
-    pain: "Stop upgrade delays with risk managed, repeatable releases.",
-    body: "We industrialize upgrades with automated impact analysis, disciplined testing, and continuous readiness so upgrades take days, not months.",
-    link: "/services#upgrade-posture-management",
-    linkText: "See the upgrade playbook",
-  },
+  // {
+  //   icon: RefreshCcw,
+  //   tag: "Make Upgrades Boring Again",
+  //   title: "Upgrade Posture Management",
+  //   pain: "Stop upgrade delays with risk managed, repeatable releases.",
+  //   body: "We industrialize upgrades with automated impact analysis, disciplined testing, and continuous readiness so upgrades take days, not months.",
+  //   link: "/services#upgrade-posture-management",
+  //   linkText: "See the upgrade playbook",
+  // },
   {
     icon: Headphones,
     tag: "AMS with Automation Bias",
@@ -99,16 +99,13 @@ function ServiceCard({ service, className }: { service: typeof services[0]; clas
 
 export function ServicesOverview() {
   const theme = getSectionTheme("services");
-  
-  const topRow = services.slice(0, 3);
-  const bottomRow = services.slice(3);
 
   return (
     <section className={`${theme.padding} ${theme.background}`}>
       <div className="container">
         <Reveal className="text-center mb-14">
           <span className={`${theme.label} uppercase tracking-wider text-teal-light text-muted-foreground font-medium mb-3 block`}>
-            The Offerings 
+            The Offerings
           </span>
           <h2 className={`${theme.heading} font-heading font-bold text-foreground mb-4`}>
             Built for high growth <span className="gradient-text">SaaS Companies</span>
@@ -118,29 +115,16 @@ export function ServicesOverview() {
           </p>
         </Reveal>
 
-        {/* Top row: 3 cards */}
+        {/* 2×2 grid for 4 services */}
         <m.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid md:grid-cols-3 gap-5 md:gap-6 mb-5 md:mb-6"
+          className="grid sm:grid-cols-2 gap-5 md:gap-6 max-w-5xl mx-auto"
         >
-          {topRow.map((service, index) => (
+          {services.map((service, index) => (
             <ServiceCard key={index} service={service} />
-          ))}
-        </m.div>
-
-        {/* Bottom row: 2 cards, centered and wider */}
-        <m.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="grid md:grid-cols-2 gap-5 md:gap-6 max-w-4xl mx-auto"
-        >
-          {bottomRow.map((service, index) => (
-            <ServiceCard key={index + 3} service={service} />
           ))}
         </m.div>
 

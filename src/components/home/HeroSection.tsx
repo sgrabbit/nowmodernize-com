@@ -44,9 +44,9 @@ export function HeroSection() {
             <p className={`${theme.subheading} text-primary-foreground/80 font-bold uppercase mt-10 mb-8 leading-tight flex items-center gap-6`}>
               <span>Modernize</span>
               <span className="text-primary-foreground/40">|</span>
-              <span>Upgrade</span>
-              <span className="text-primary-foreground/40">|</span>
               <span>Run</span>
+              <span className="text-primary-foreground/40">|</span>
+              <span>Scale</span>
             </p>
           </Reveal>
 

@@ -10,7 +10,7 @@ import { Reveal } from "@/components/motion";
 const faqs = [
   {
     question: "Do you do new implementations or migrations?",
-    answer: "No — we focus on modernizing existing ServiceNow instances (stability, upgrades, debt reduction, AI readiness).",
+    answer: "No! We focus on modernizing existing ServiceNow instances (stability, upgrades, debt reduction, AI readiness).",
   },
   {
     question: "How do you start and how long does it take to see impact?",
@@ -27,6 +27,10 @@ const faqs = [
   {
     question: "What ServiceNow areas do you cover?",
     answer: "Modernization of platform foundations and workflows across IT / Employee / Customer ops, plus upgrades, AMS, and AI automation readiness.",
+  },
+  {
+    question: "What is Managed Delivery Capacity?",
+    answer: "It’s an engagement option for teams that need to ramp quickly. You get committed delivery capacity with continuity (US overlap, bench buffer, and replacement coverage) governed by an account manager with senior escalation when needed.\n\nDe-risk the start. Build momentum. Scale with confidence.",
   },
 ];
 
@@ -53,7 +57,7 @@ export function FAQSection() {
                 <AccordionTrigger className={`${theme.cardTitle} text-left font-heading font-semibold text-foreground hover:text-primary py-5`}>
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className={`${theme.cardDescription} text-muted-foreground pb-5`}>
+                <AccordionContent className={`${theme.cardDescription} text-muted-foreground pb-5 whitespace-pre-line`}>
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
