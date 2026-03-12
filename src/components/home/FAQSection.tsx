@@ -30,7 +30,7 @@ const faqs = [
   },
   {
     question: "What is Managed Delivery Capacity?",
-    answer: "It’s an engagement option for teams that need to ramp quickly. You get committed delivery capacity with continuity (US overlap, bench buffer, and replacement coverage) governed by an account manager with senior escalation when needed.\n\nDe-risk the start. Build momentum. Scale with confidence.",
+    answer: "It’s an engagement option for teams that need to ramp quickly. You get committed delivery capacity with continuity (US overlap, bench buffer, and replacement coverage) governed by an account manager with senior escalation when needed.",
   },
 ];
 

@@ -72,7 +72,7 @@ export function WhyUs() {
 
         <Reveal delay={0.4} className="mt-12 text-center">
           <p className={`${theme.bodyText} font-heading font-semibold text-foreground`}>
-            Start small. Prove value. Earn the long term.
+            De-risk the start. Build momentum. Scale with confidence.
           </p>
         </Reveal>
       </div>
